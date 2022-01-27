@@ -1,1 +1,5 @@
-./lib/.env
+.idea
+vendor/
+.env
+.vscode
+.DS_Store
