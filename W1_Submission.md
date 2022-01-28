@@ -1,6 +1,6 @@
 <table><tr><td> <em>Assignment: </em> S22-M1-GettingStarted</td></tr>
 <tr><td> <em>Student: </em> Jong Hyun Choi(jc865)</td></tr>
-<tr><td> <em>Generated: </em> 1/27/2022 11:24:41 PM</td></tr>
+<tr><td> <em>Generated: </em> 1/27/2022 11:30:03 PM</td></tr>
 <tr><td> <em>Grading Link: </em> <a href="https://learn.ethereallab.app/homework/IT202-010-S22/s22-m1-gettingstarted/grade/jc865" target="_blank">Grading</a></table>
 <table><tr><td> <em>Instructions: </em> <ol>
 <li>Create a repository on github, use the format [course]-[section] as the repository name.</li>
@@ -57,6 +57,6 @@
 </table></td></tr>
 <table><tr><td> <em>Deliverable 5: </em> Pull Request Link </td><tr><td><em>Status: </em> <img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=Complete"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Add the pull request link here (it should end in /pull/#)</td></tr>
-<tr><td>[https://github.com/nekozye/IT202-010/pull/2](https://github.com/nekozye/IT202-010/pull/2)</td></tr>
+<tr><td>[https://github.com/nekozye/IT202-010/pull/3](https://github.com/nekozye/IT202-010/pull/3)</td></tr>
 </table></td></tr>
 <table><tr><td><em>Grading Link: </em><a href="https://learn.ethereallab.app/homework/IT202-010-S22/s22-m1-gettingstarted/grade/jc865" target="_blank">Grading</a></td></tr></table>
