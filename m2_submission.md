@@ -1,6 +1,6 @@
 <table><tr><td> <em>Assignment: </em> M2 PHP-HW</td></tr>
 <tr><td> <em>Student: </em> Jong Hyun Choi(jc865)</td></tr>
-<tr><td> <em>Generated: </em> 2/10/2022 9:33:07 PM</td></tr>
+<tr><td> <em>Generated: </em> 2/12/2022 8:01:21 PM</td></tr>
 <tr><td> <em>Grading Link: </em> <a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IT202-010-S22/m2-php-hw/grade/jc865" target="_blank">Grading</a></td></tr></table>
 <table><tr><td> <em>Instructions: </em> <p>Make sure you have the dev/prod branches created before starting this assignment.</p>
 <p>Setup steps:</p>
@@ -59,7 +59,7 @@ You can find all 3 template files in this gist: <a href="https://gist.github.com
 </td></tr></table>
 <table><tr><td> <em>Deliverable 1: </em> Problem 1 - Only output Odd values of the Array under "Odds output" </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=Complete"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Clearly screenshot the output of Problem 1 showing the data and the code output in the proper part of the page</td></tr>
-<tr><td><table><tr><td><img width="768px" src="https://github.com/nekozye/IT202-010/blob/M2-PHP-HW/pictures/problem1.PNG"/></td></tr>
+<tr><td><table><tr><td><img width="768px" src="https://raw.githubusercontent.com/nekozye/IT202-010/M2-PHP-HW/pictures/problem1.PNG?token=GHSAT0AAAAAABRAFFI67VKKZHO432R4QJN6YQRSJ6Q"/></td></tr>
 <tr><td> <em>Caption:</em> <p>The output of the webpage through heroku web service. The output uses echo,<br>but it does not output the modified array but only prints out the<br>odd values within the array.<br></p>
 </td></tr>
 </table></td></tr>
@@ -68,7 +68,7 @@ You can find all 3 template files in this gist: <a href="https://gist.github.com
 </table></td></tr>
 <table><tr><td> <em>Deliverable 2: </em> Problem 2 - Only output the sum/total of the array values by assigning it to the $total variable (the number must end in 2 decimal places, if it ends in 1 it must have a 0 at the end) </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=Complete"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Clearly screenshot the output of Problem 2 showing the data and the code output in the proper part of the page</td></tr>
-<tr><td><table><tr><td><img width="768px" src="https://github.com/nekozye/IT202-010/blob/M2-PHP-HW/pictures/problem2.PNG"/></td></tr>
+<tr><td><table><tr><td><img width="768px" src="https://raw.githubusercontent.com/nekozye/IT202-010/M2-PHP-HW/pictures/problem2.PNG?token=GHSAT0AAAAAABRAFFI7BADQT42AT66P2X54YQRSKSQ"/></td></tr>
 <tr><td> <em>Caption:</em> <p>The output of the webpage through heroku web service. The output uses echo<br>to print out the added value, with 2 decimal points rounded with normal<br>mathmatical rounding rules.<br></p>
 </td></tr>
 </table></td></tr>
@@ -77,7 +77,7 @@ You can find all 3 template files in this gist: <a href="https://gist.github.com
 </table></td></tr>
 <table><tr><td> <em>Deliverable 3: </em> Problem 3 - Output the given values as positive under the "Positive Output" message (the data otherwise shouldn't change) </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=Complete"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Clearly screenshot the output of Problem 3 showing the data and the code output in the proper part of the page</td></tr>
-<tr><td><table><tr><td><img width="768px" src="https://github.com/nekozye/IT202-010/blob/M2-PHP-HW/pictures/problem3.PNG"/></td></tr>
+<tr><td><table><tr><td><img width="768px" src="https://raw.githubusercontent.com/nekozye/IT202-010/M2-PHP-HW/pictures/problem3.png?token=GHSAT0AAAAAABRAFFI6SPYYRMFPB27BXOREYQRSLKA"/></td></tr>
 <tr><td> <em>Caption:</em> <p>The final problem makes it ouput the given values as positive under the<br>po message. The last array is technically a string, so no positive there<br>(string cannot be positive or negative numerically)<br></p>
 </td></tr>
 </table></td></tr>
