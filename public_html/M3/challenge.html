@@ -25,7 +25,26 @@
                     the_title = "start"
                 }
 
-                updateCurrentPage(the_title)
+
+                let listings = document.getElementsByTagName("nav")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
+                for(let i = 0; i < listings.length; i++)
+                {
+                    let single_a = listings[i].getElementsByTagName("a")[0];
+
+                    console.log("matching :"+the_title+","+single_a.innerText.toLowerCase());
+                    console.log(single_a.innerText.toLowerCase() === the_title)
+
+                    if(single_a.innerText.toLowerCase() === the_title)
+                    {
+                        single_a.classList.add("selected-nav");
+                    }
+                    else
+                    {
+                        single_a.classList.remove("selected-nav");
+                    }
+                }
+                updateCurrentPage(the_title);
+                
                 
                 
             }, 100);
@@ -58,6 +77,15 @@
 
         nav li a:hover{
             background-color: #395357;
+        }
+        
+        nav ul a:active{
+            background-color:aquamarine;
+        }
+
+        .selected-nav{
+            background-color: aquamarine;
+            color: black;
         }
 
         /* For List */
