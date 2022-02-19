@@ -17,15 +17,15 @@
                 //TODO: add code for processing the current selection
 
 
-                $the_title = window.location.hash.substring(1);
+                let the_title = window.location.hash.substring(1);
 
                 //Note: likely you'll want to call updateCurrentPage towards the end
-                if($the_title === "")
+                if(the_title === "")
                 {
-                    $the_title = "start"
+                    the_title = "start"
                 }
 
-                updateCurrentPage($the_title)
+                updateCurrentPage(the_title)
                 
                 
             }, 100);
