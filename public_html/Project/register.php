@@ -40,9 +40,49 @@
   //TODO 3: validation on php side
   $has_error = false;
 
+
+  //Email Validation
   if(empty($email))
   {
-    
+    echo "Email cannot be blank.";
+    $has_error = true;
+  }
+
+  $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+  if(!filter_var($email,FILTER_SANITIZE_EMAIL))
+  {
+    echo "Invalid Email Address.";
+    $has_error = true;
+  }
+
+
+  //Password Validation
+  if(empty($password))
+  {
+    echo "Password cannot be blank.";
+    $has_error = true;
+  }
+  if(empty($confirm))
+  {
+    echo "Please re-enter the password in confirm slot.";
+    $has_error = true;
+  }
+  if(strlen($password) < 8)
+  {
+    echo "Password is too short.";
+    $has_error = true;
+  }
+  if(strlen($password) > 0 && $password !== $confirm)
+  {
+    echo "The confirm slot must match password.";
+    $has_error = true;
+  }
+
+  
+  if(!$has_error)
+  {
+    echo "Welcome, $email";
   }
   
 ?>
