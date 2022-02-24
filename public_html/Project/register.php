@@ -1,7 +1,14 @@
 <?php
+<<<<<<< HEAD
   require(__DIR__."/../../partials/nav.php");
 ?>
 
+=======
+  require(__DIR__."/../../lib/functions.php");
+?>
+
+
+>>>>>>> c0a8b40 (bugfix)
 <form onsubmit="return validate(this)" method="POST">
   <div>
     <label for="email">Email</label>
