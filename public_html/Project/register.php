@@ -83,6 +83,23 @@
   if(!$has_error)
   {
     echo "Welcome, $email";
+
+    //password hashing
+    $pw_hash = password_hash($password, PASSWORD_BCRYPT);
+    $db = getDB();
+
+    $prep_stmt = $db->prepare("INSERT INTO Users(email, password) VALUES(:email, :password)");
+    try{
+      $db->execute([":email" => $email, ":password" => $pw_hash ]);
+      echo "Registration Sucessful!";
+    }
+    catch(Exception $e)
+    {
+      echo "There was a problem registering.";
+      "<pre>" .var_export($e,true)."</pre>";
+    }
   }
+  
+
   
 ?>
