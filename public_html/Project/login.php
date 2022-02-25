@@ -75,9 +75,32 @@
   
   if(!$has_error)
   {
-    echo "Welcome, $email!";
-
     //TODO 4
+
+    $DB = getDB();
+    $stmt = $db->prepare("SELECT id, username, email, password from Users where email = :email");
+    try{
+        $r = $stmt -> execute([":email" => $email]);
+        if ($r) {
+            $user -> $stmt -> fetch(PDO::FETCH_ASSOC);
+            if ($user) {
+                $hash = $user["password"];
+                unset($user["password"]);
+
+                if (password_verify($password, $hash)){
+                    echo "Welcome $email";
+                } else {
+                    echo "Invalid password";
+                }
+            }
+            else{
+                echo "Email not registered";
+            }
+        }
+    }
+    catch (Exception $e) {
+        echo "<pre>" . var_export($e, true). "</pre>";
+    }
   }
   
 
