@@ -29,80 +29,55 @@
   }
 </script>
 <?php
+if (isset($_POST["email"]) && isset($_POST["password"])) {
+  $email = se($_POST, "email", "", false);
+  $password = se($_POST, "password", "", false);
 
-  if(count($_POST) == 0)
-  {
-    return;
+  //TODO 3
+  $hasError = false;
+  if (empty($email)) {
+      echo "Email must not be empty";
+      $hasError = true;
   }
-//TODO 2: assign the post value for easier access
-  if(isset($_POST["email"])&&isset($_POST["password"]))
-  {
-    $email = se($_POST, "email", "", false);
-    $password = se($_POST, "password", "", false);
-  };
-
-  //TODO 3: validation on php side
-  $has_error = false;
-
-
-  //Email Validation
-  if(empty($email))
-  {
-    echo "Email cannot be blank.";
-    $has_error = true;
-  }
-
+  //sanitize
   $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-
-  if(!filter_var($email,FILTER_SANITIZE_EMAIL))
-  {
-    echo "Invalid Email Address.";
-    $has_error = true;
+  //validate
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      echo "Invalid email address";
+      $hasError = true;
   }
-
-
-  //Password Validation
-  if(empty($password))
-  {
-    echo "Password cannot be blank.";
-    $has_error = true;
+  if (empty($password)) {
+      echo "password must not be empty";
+      $hasError = true;
   }
-  if(strlen($password) < 8)
-  {
-    echo "Password is too short.";
-    $has_error = true;
+  if (strlen($password) < 8) {
+      echo "Password too short";
+      $hasError = true;
   }
-  
-  if(!$has_error)
-  {
-    //TODO 4
-
-    $DB = getDB();
-    $stmt = $db->prepare("SELECT id, username, email, password from Users where email = :email");
-    try{
-        $r = $stmt -> execute([":email" => $email]);
-        if ($r) {
-            $user -> $stmt -> fetch(PDO::FETCH_ASSOC);
-            if ($user) {
-                $hash = $user["password"];
-                unset($user["password"]);
-
-                if (password_verify($password, $hash)){
-                    echo "Welcome $email";
-                } else {
-                    echo "Invalid password";
-                }
-            }
-            else{
-                echo "Email not registered";
-            }
-        }
-    }
-    catch (Exception $e) {
-        echo "<pre>" . var_export($e, true). "</pre>";
-    }
+  if (!$hasError) {
+      //TODO 4
+      $db = getDB();
+      $stmt = $db->prepare("SELECT id, email, password from Users where email = :email");
+      try {
+          $r = $stmt->execute([":email" => $email]);
+          if ($r) {
+              $user = $stmt->fetch(PDO::FETCH_ASSOC);
+              if ($user) {
+                  $hash = $user["password"];
+                  unset($user["password"]);
+                  if (password_verify($password, $hash)) {
+                      echo "Weclome $email";
+                  } else {
+                      echo "Invalid password";
+                  }
+              } else {
+                  echo "Email not found";
+              }
+          }
+      } catch (Exception $e) {
+          echo "<pre>" . var_export($e, true) . "</pre>";
+      }
   }
-  
-
+}
   
 ?>
