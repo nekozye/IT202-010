@@ -1,3 +1,7 @@
+<?php
+  require(__DIR__."/../../lib/functions.php");
+?>
+
 <form onsubmit="return validate(this)" method="POST">
   <div>
     <label for="email">Email</label>
@@ -29,6 +33,11 @@
   }
 </script>
 <?php
+
+  if(count($_POST) == 0)
+  {
+    return;
+  }
 //TODO 2: assign the post value for easier access
   if(isset($_POST["email"])&&isset($_POST["password"])&&isset($_POST["confirm"]))
   {
