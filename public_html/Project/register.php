@@ -1,5 +1,5 @@
 <?php
-  require(__DIR__."/../../lib/functions.php");
+  require(__DIR__."/../../partials/nav.php");
 ?>
 
 <form onsubmit="return validate(this)" method="POST">
@@ -99,13 +99,13 @@
 
     $prep_stmt = $db->prepare("INSERT INTO Users(email, password) VALUES(:email, :password)");
     try{
-      $db->execute([":email" => $email, ":password" => $pw_hash ]);
+      $prep_stmt->execute([":email" => $email, ":password" => $pw_hash ]);
       echo "Registration Sucessful!";
     }
     catch(Exception $e)
     {
       echo "There was a problem registering.";
-      "<pre>" .var_export($e,true)."</pre>";
+      echo "<pre>" .var_export($e,true)."</pre>";
     }
   }
   
