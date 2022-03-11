@@ -46,6 +46,7 @@
       - [ ] Logging out will redirect to login page
       - [ ] User should see a message that they’ve successfully logged out
       - [ ] Session should be destroyed (so the back button doesn’t allow them access back in)
+      
   - [ ] Basic security rules implemented
       - [ ] Authentication:
           - [ ] Function to check if user is logged in
