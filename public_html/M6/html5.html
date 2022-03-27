@@ -1,5 +1,8 @@
-<canvas id="canvas" width="400" height="600" tabindex="1">
-</canvas>
+
+<div style = "text-align:center;">
+  <canvas id="canvas" width="400" height="600" tabindex="1">
+  </canvas>
+</div>
 
 <script>
 // Arcade Shooter game
@@ -34,10 +37,24 @@ function makeSpecialPlayer(x,y,length,speed) {
 
 }
 
+function makeRectangle(x, y, width, height, speed) {
+  return {
+    x: x,
+    y: y,
+    w: width,
+    h: height,
+    s: speed,
+    draw: function() {
+      context.fillRect(this.x, this.y, this.w, this.h);
+    }
+  };
+}
+
+
 // The ship the user controls
 var shiplength = 25;
 
-var ship = makeSpecialPlayer(canvas.width / 2 - (shiplength / 2), canvas.height - shiplength - (shiplength / 5) , shiplength, 5);
+var ship = makeSpecialPlayer(canvas.width / 2 - (shiplength / 2), canvas.height - shiplength - (shiplength / 5) , shiplength, 4);
 
 // Flags to tracked which keys are pressed
 var up = false;
@@ -51,8 +68,24 @@ var space = false;
 
 // Is a bullet already on the canvas?
 var shooting = false;
+
+// Is a bomb already on the canvas?
+var bombing = false;
+var b_exploding = false;
+var bombprojectileshow = false;
+
 // The bulled shot from the ship
 var bullet = makeSquare(0, 0, 10, 10);
+
+
+// Bomb
+
+var leftBombCount = 2;
+
+var bomb = makeSquare(0, 0, 15, 2);
+var bombprojectileid = null;
+
+var bombresidue = null;
 
 // An array for enemies (in case there are more than one)
 var enemies = [];
@@ -67,26 +100,77 @@ function makeEnemy() {
   enemies.push(makeSquare(enemyX, enemyY, enemySize, enemySpeed));
 }
 
+function removeEnemy (enemies, indextoRemove)
+{
+        enemies.splice(indextoRemove, 1);
+        score++;
+        shooting = false;
+        // Make the game harder
+        if (score % 10 === 0 && timeBetweenEnemies > 1000) {
+          clearInterval(timeoutId);
+          timeBetweenEnemies -= 1000;
+          timeoutId = setInterval(makeEnemy, timeBetweenEnemies);
+          //get one bomb every levelup
+          leftBombCount += 1;
+        } else if (score % 5 === 0) {
+          enemyBaseSpeed += 1;
+        }
+    
+}
+
 // Check if number a is in the range b to c (exclusive)
 function isWithin(a, b, c) {
   return (a > b && a < c);
 }
 
-// Return true if two squares a and b are colliding, false otherwise
+function hasValue(o, varname){
+  return (Object.keys(o).indexOf(varname) > -1) ;
+}
+
+
+// Return true if two rectangles a and b are colliding, false otherwise
 function isColliding(a, b) {
   var result = false;
-  if (isWithin(a.x, b.x, b.x + b.l) || isWithin(a.x + a.l, b.x, b.x + b.l)) {
-    if (isWithin(a.y, b.y, b.y + b.l) || isWithin(a.y + a.l, b.y, b.y + b.l)) {
+
+  if(a == null || b == null)
+  {
+    return false;
+  }
+
+  // if any of them is square, convert them to rectangle for comparisons
+
+  
+
+  if (hasValue(a, "l"))
+  {
+    a = makeRectangle(a.x, a.y, a.l, a.l, a.s);
+  }
+
+  if (hasValue(b, "l"))
+  {
+    b = makeRectangle(b.x, b.y, b.l, b.l, b.s);
+  }
+
+
+  if (isWithin(a.x, b.x, b.x + b.w) || isWithin(a.x + a.w, b.x, b.x + b.w)) {
+    if (isWithin(a.y, b.y, b.y + b.h) || isWithin(a.y + a.h, b.y, b.y + b.h)) {
       result = true;
     }
   }
+
+
+
   return result;
 }
 
 // Track the user's score
-var score = 0;
+var score = 8;
 // The delay between enemies (in milliseconds)
 var timeBetweenEnemies = 5 * 1000;
+
+// The bomb explosion timer (in millisec)
+var timeOfBombBeingExploded = 7 * 1000;
+
 // ID to track the spawn timeout
 var timeoutId = null;
 
@@ -193,8 +277,42 @@ function shoot() {
 
 // Use the item
 function useItem(){
-    //TODO:need to make item usage functionality
+    if (!bombing && leftBombCount > 0) {
+      bombing = true;
+      bombprojectileshow = true;
+      bomb.x = ship.x + ship.l / 2 - bomb.l /2;
+      bomb.y = ship.y - ship.l / 2 + bomb.l /2;
+      leftBombCount -= 1;
+    }
 }
+
+// bomb explosion timer setup
+function bombCanter(){
+  b_exploding = true;
+  bombprojectileshow = false;
+
+  clearInterval(bombprojectileid);
+
+  bombprojectileid = setInterval(residueRemover, timeOfBombBeingExploded);
+
+
+  var offsety = bomb.y;
+  var offsetx = 0;
+
+  bombresidue = makeRectangle(offsetx, offsety, canvas.width, bomb.l, 0);
+}
+
+function residueRemover(){
+  b_exploding = false;
+  bombing = false;
+  bombresidue = null;
+
+  clearInterval(bombprojectileid);
+
+}
+
+
+
 
 // The main draw loop
 function draw() {
@@ -258,19 +376,12 @@ function draw() {
     bullet.y -= bullet.s;
     // Collide the bullet with enemies
     enemies.forEach(function(enemy, i) {
-      if (isColliding(bullet, enemy)) {
-        enemies.splice(i, 1);
-        score++;
-        shooting = false;
-        // Make the game harder
-        if (score % 10 === 0 && timeBetweenEnemies > 1000) {
-          clearInterval(timeoutId);
-          timeBetweenEnemies -= 1000;
-          timeoutId = setInterval(makeEnemy, timeBetweenEnemies);
-        } else if (score % 5 === 0) {
-          enemyBaseSpeed += 1;
-        }
+      if (isColliding(bullet, enemy) ) {
+        removeEnemy(enemies,i);
       }
+
+      
+
     });
     // Collide with the wall
     if (bullet.y < 0) {
@@ -280,11 +391,58 @@ function draw() {
     context.fillStyle = '#0000FF';
     bullet.draw();
   }
+  
+  // Draw bomb
+
+  context.fillStyle = '#EB34E5';
+
+  if (bombing)
+  {
+    if (bombprojectileshow) {
+      bomb.y -= bomb.s;
+      bomb.draw();
+
+      if (bomb.y < canvas.height/2)
+      {
+        bombCanter();
+      }
+
+    }
+
+
+  // draw explosion
+
+    if (b_exploding) {
+
+
+      enemies.forEach(function(enemy, i) {
+        if (isColliding(enemy, bombresidue) ) {
+          removeEnemy(enemies,i);
+        }
+      });
+
+      context.globalAlpha = 0.2;
+      
+      bombresidue.draw();
+
+      context.globalAlpha = 1.0;
+    }
+  }
+  
+
+
   // Draw the score
   context.fillStyle = '#000000';
   context.font = '24px Arial';
   context.textAlign = 'left';
   context.fillText('Score: ' + score, 1, 25)
+
+  // Draw the Bomb Count
+  context.fillStyle = '#000000';
+  context.font = '24px Arial';
+  context.textAlign = 'left';
+  context.fillText('Bomb: ' + leftBombCount, 1, 50)
+
   // End or continue the game
   if (gameOver) {
     endGame();
