@@ -1,4 +1,4 @@
-<canvas id="canvas" width="600" height="400" tabindex="1">
+<canvas id="canvas" width="400" height="600" tabindex="1">
 </canvas>
 
 <script>
@@ -22,10 +22,22 @@ function makeSquare(x, y, length, speed) {
   };
 }
 
-// The ship the user controls
-var shiplength = 50;
+function makeSpecialPlayer(x,y,length,speed) {
 
-var ship = makeSquare(canvas.width / 2 - (shiplength / 2), canvas.height - shiplength - (shiplength / 5) , shiplength, 5);
+  var ship = makeSquare(x,y,length,speed);
+  ship.draw = function(){
+    context.fillRect(this.x, this.y, this.l, this.l);
+    //little tiny cannon
+    context.fillRect(this.x+(this.l/2)-(this.l/2/3), this.y-(this.l/3), this.l/3, this.l/3);
+  }
+  return ship;
+
+}
+
+// The ship the user controls
+var shiplength = 25;
+
+var ship = makeSpecialPlayer(canvas.width / 2 - (shiplength / 2), canvas.height - shiplength - (shiplength / 5) , shiplength, 5);
 
 // Flags to tracked which keys are pressed
 var up = false;
@@ -48,9 +60,9 @@ var enemies = [];
 // Add an enemy object to the array
 var enemyBaseSpeed = 2;
 function makeEnemy() {
-  var enemyX = canvas.width;
   var enemySize = Math.round((Math.random() * 15)) + 15;
-  var enemyY = Math.round(Math.random() * (canvas.height - enemySize * 2)) + enemySize;
+  var enemyX = Math.round(Math.random() * (canvas.width - enemySize * 2)) + enemySize;
+  var enemyY = 0;
   var enemySpeed = Math.round(Math.random() * enemyBaseSpeed) + enemyBaseSpeed;
   enemies.push(makeSquare(enemyX, enemyY, enemySize, enemySpeed));
 }
@@ -159,7 +171,7 @@ canvas.addEventListener('keyup', function(event) {
   if (event.keyCode === 37) { // LEFT
     left = false;
   }
-  if (event.keyCode === 39) { // DOWN
+  if (event.keyCode === 39) { // RIGHT
     right = false;
   }
 });
@@ -167,15 +179,15 @@ canvas.addEventListener('keyup', function(event) {
 // Clear the canvas
 function erase() {
   context.fillStyle = '#FFFFFF';
-  context.fillRect(0, 0, 600, 400);
+  context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 // Shoot the bullet (if not already on screen)
 function shoot() {
   if (!shooting) {
     shooting = true;
-    bullet.x = ship.x + ship.l;
-    bullet.y = ship.y + ship.l / 2;
+    bullet.x = ship.x + ship.l / 2 - bullet.l /2;
+    bullet.y = ship.y - ship.l / 2 + bullet.l /2;
   }
 }
 
@@ -190,8 +202,8 @@ function draw() {
   var gameOver = false;
   // Move and draw the enemies
   enemies.forEach(function(enemy) {
-    enemy.x -= enemy.s;
-    if (enemy.x < 0) {
+    enemy.y += enemy.s;
+    if (enemy.y > canvas.height) {
       gameOver = true;
     }
     context.fillStyle = '#00FF00';
@@ -243,7 +255,7 @@ function draw() {
   // Move and draw the bullet
   if (shooting) {
     // Move the bullet
-    bullet.x += bullet.s;
+    bullet.y -= bullet.s;
     // Collide the bullet with enemies
     enemies.forEach(function(enemy, i) {
       if (isColliding(bullet, enemy)) {
@@ -261,7 +273,7 @@ function draw() {
       }
     });
     // Collide with the wall
-    if (bullet.x > canvas.width) {
+    if (bullet.y < 0) {
       shooting = false;
     }
     // Draw the bullet
