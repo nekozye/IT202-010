@@ -19,7 +19,7 @@
 /* Style for navigation bar*/
 
 nav li {
-    display: inline; background-color: gray;
+    display: inline; background-color: green;
 }
 
 nav li a {
@@ -28,4 +28,9 @@ nav li a {
 
 input {
     border-radius: 5;
+}
+
+body {
+    background-color:gray;
+    color: rgb(4, 117, 42)
 }
