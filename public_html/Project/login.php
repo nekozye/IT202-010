@@ -58,6 +58,9 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
       //TODO 4
       $db = getDB();
       $stmt = $db->prepare("SELECT id, email, password from Users where email = :email");
+
+
+
       try {
           $r = $stmt->execute([":email" => $email]);
           if ($r) {
@@ -66,7 +69,31 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                   $hash = $user["password"];
                   unset($user["password"]);
                   if (password_verify($password, $hash)) {
-                      echo "Weclome $email";
+                      //echo "Weclome $email";
+
+                      //setting our session data from database
+                      $_SESSION["user"] = $user;
+                      try{
+                        $stmt = $db->prepare("SELECT Roles.name from Roles JOIN UserRoles on Roles.id = UserRoles.role_id where UserRoles.user_id = :user_id and Roles.is_active = 1 and UserRoles.is_active = 1");
+                        $stmt -> execute([":user_id" => $user["id"]]);
+
+                        $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                        if ($roles) {
+                          $_SESSION["user"]["roles"] = $roles;
+                        }
+                        else {
+                          $_SESSION["user"]["roles"] = [];
+                        }
+
+
+                      }
+                      catch (Exception $e){
+                        error_log(var_export($e,true));
+                      }
+
+
+
                   } else {
                       echo "Invalid password";
                   }
