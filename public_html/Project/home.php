@@ -5,9 +5,9 @@
 <?php
 //edited to use user_helpers.php
     if(is_logged_in()){
-        echo "Welcome, " . get_user_email(); 
+        flash("Welcome, " . get_user_email());
     }
     else{
-        echo "You're not logged in";
+        flash("You're not logged in");
     }
 ?>

@@ -1,6 +1,9 @@
 <?php
 /*put this at the bottom of the page so any templates
  populate the flash variable and then display at the proper timing*/
+
+
+ 
 ?>
 <div class="container" id="flash">
     <?php $messages = getMessages(); ?>
