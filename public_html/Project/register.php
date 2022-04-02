@@ -4,6 +4,10 @@
 
 <form onsubmit="return validate(this)" method="POST">
   <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" required maxlength="30" />
+  </div>
+  <div>
     <label for="email">Email</label>
     <input type="email" name="email" required />
   </div>
@@ -44,6 +48,7 @@
     $email = se($_POST, "email", "", false);
     $password = se($_POST, "password", "", false);
     $confirm = se($_POST, "confirm", "", false);
+    $username = se($_POST, "username", "", false);
   };
 
   //TODO 3: validation on php side
@@ -88,6 +93,14 @@
     $has_error = true;
   }
 
+  if(!preg_match('/^[a-z0-9_-]{3,30}$/', $username)) {
+    flash (
+      "Username must be lowercase, alphanumerical with only special characters being _ and -", "warning"
+    );
+
+    $hasError = true;
+  }
+
   
   if(!$has_error)
   {
@@ -97,10 +110,10 @@
     $pw_hash = password_hash($password, PASSWORD_BCRYPT);
     $db = getDB();
 
-    $prep_stmt = $db->prepare("INSERT INTO Users(email, password) VALUES(:email, :password)");
+    $prep_stmt = $db->prepare("INSERT INTO Users(email, password, username) VALUES(:email, :password, :username)");
     try{
-      $prep_stmt->execute([":email" => $email, ":password" => $pw_hash ]);
-      flash("Registration Sucessful!");
+      $prep_stmt->execute([":email" => $email, ":password" => $pw_hash, ":username" => $username]);
+      flash("Registration Successful!");
     }
     catch(Exception $e)
     {
@@ -112,3 +125,5 @@
 
   
 ?>
+
+<?php require_once(__DIR__."/../../partials/flash.php"); ?>
