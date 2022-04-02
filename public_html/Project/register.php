@@ -53,7 +53,7 @@
   //Email Validation
   if(empty($email))
   {
-    echo "Email cannot be blank.";
+    flash("Email cannot be blank.");
     $has_error = true;
   }
 
@@ -62,36 +62,36 @@
 
   if(!is_valid_email($email))
   {
-    echo "Invalid email address";
+    flash("Invalid email address");
     $hasError = true;
   }
 
   //Password Validation
   if(empty($password))
   {
-    echo "Password cannot be blank.";
+    flash("Password cannot be blank.");
     $has_error = true;
   }
   if(empty($confirm))
   {
-    echo "Please re-enter the password in confirm slot.";
+    flash("Please re-enter the password in confirm slot.");
     $has_error = true;
   }
   if(strlen($password) < 8)
   {
-    echo "Password is too short.";
+    flash("Password is too short.");
     $has_error = true;
   }
   if(strlen($password) > 0 && $password !== $confirm)
   {
-    echo "The confirm slot must match password.";
+    flash("The confirm slot must match password.");
     $has_error = true;
   }
 
   
   if(!$has_error)
   {
-    echo "Welcome, $email";
+    flash("Welcome, $email");
 
     //password hashing
     $pw_hash = password_hash($password, PASSWORD_BCRYPT);
@@ -100,12 +100,12 @@
     $prep_stmt = $db->prepare("INSERT INTO Users(email, password) VALUES(:email, :password)");
     try{
       $prep_stmt->execute([":email" => $email, ":password" => $pw_hash ]);
-      echo "Registration Sucessful!";
+      flash("Registration Sucessful!");
     }
     catch(Exception $e)
     {
-      echo "There was a problem registering.";
-      echo "<pre>" .var_export($e,true)."</pre>";
+      flash("There was a problem registering.");
+      flash("<pre>" .var_export($e,true)."</pre>");
     }
   }
   
