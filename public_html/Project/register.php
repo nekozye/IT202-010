@@ -57,14 +57,14 @@
     $has_error = true;
   }
 
-  $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+  //edited to use the user_helper.php
+  $email = sanitize_email($email);
 
-  if(!filter_var($email,FILTER_SANITIZE_EMAIL))
+  if(!is_valid_email($email))
   {
-    echo "Invalid Email Address.";
-    $has_error = true;
+    echo "Invalid email address";
+    $hasError = true;
   }
-
 
   //Password Validation
   if(empty($password))
