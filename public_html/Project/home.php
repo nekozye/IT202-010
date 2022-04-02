@@ -5,9 +5,11 @@
 <?php
 //edited to use user_helpers.php
     if(is_logged_in()){
-        flash("Welcome, " . get_user_email());
+        //flash("Welcome, " . get_user_email());
     }
     else{
         flash("You're not logged in");
     }
 ?>
+
+<?php require_once(__DIR__."/../../partials/flash.php"); ?>

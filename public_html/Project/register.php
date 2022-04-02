@@ -93,7 +93,7 @@
     $has_error = true;
   }
 
-  if(!preg_match('/^[a-z0-9_-]{3,30}/$', $username)) {
+  if(!preg_match('/^[a-z0-9_-]{3,30}$/', $username)) {
     flash (
       "Username must be lowercase, alphanumerical with only special characters being _ and -", "warning"
     );
@@ -125,3 +125,5 @@
 
   
 ?>
+
+<?php require_once(__DIR__."/../../partials/flash.php"); ?>
