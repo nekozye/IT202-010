@@ -21,14 +21,16 @@ reset_session();
     </div>
     <input type="submit" value="Register" />
 </form>
+<script src="<?php echo get_url('helpers.js'); ?>"></script>
+
 <script>
     function validate(form) {
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
-
         return true;
     }
 </script>
+
 <?php
 //TODO 2: add PHP Code
 if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm"])) {
@@ -73,7 +75,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
     if (
         strlen($password) > 0 && $password !== $confirm
     ) {
-        flash("Passwords must match", "danger");
+        flash("Password and Confirm must match", "danger");
         $hasError = true;
     }
     if (!$hasError) {

@@ -32,7 +32,7 @@ nav li {
 
 nav li a {
     display: block;
-    color: white;
+    color: rgb(255, 255, 255);
     text-align:center;
     padding: 14px 16px;
     text-decoration: none;
@@ -43,8 +43,9 @@ nav li a:hover{
 }
 
 .active {
-    background-color: #04AA6D;
+    background-color: #006eff;
 }
+
 
 form.listsub{
     border-radius: 0px;
@@ -71,7 +72,6 @@ table, th, td {
 }
 
 input.listsub{
-    width: 25%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -82,6 +82,7 @@ label {
 }
 
 input:not(.listsub)[type=checkbox]{
+    margin: 0px 10px;
 }
 
 input:not(.listsub):not([type=checkbox]){

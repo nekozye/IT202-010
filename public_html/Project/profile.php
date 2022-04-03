@@ -24,7 +24,7 @@ if (isset($_POST["save"])) {
         $stmt = $db->prepare("UPDATE Users set email = :email, username = :username where id = :id");
         try {
             $stmt->execute($params);
-            flash("Profile saved", "success");
+            flash("Email and Username saved", "success");
         } catch (Exception $e) {
             users_check_duplicate($e->errorInfo);
         }
@@ -51,10 +51,20 @@ if (isset($_POST["save"])) {
     $current_password = se($_POST, "currentPassword", null, false);
     $new_password = se($_POST, "newPassword", null, false);
     $confirm_password = se($_POST, "confirmPassword", null, false);
+
+
+    //special case where current password is empty but the new and confirm password isn't.
+    if(empty($current_password) && (!empty($new_password) || !empty($confirm_password)))
+    {
+        flash("Please Enter Current Password", "danger");
+        $hasError = true;
+    }
+
+
     if (!empty($current_password) && !empty($new_password) && !empty($confirm_password)) {
         $hasError = false;
         if (!is_valid_password($new_password)) {
-            flash("Password too short", "danger");
+            flash("New Password too short", "danger");
             $hasError = true;
         }
         if (!$hasError) {
@@ -73,7 +83,7 @@ if (isset($_POST["save"])) {
                                 ":password" => password_hash($new_password, PASSWORD_BCRYPT)
                             ]);
 
-                            flash("Password reset", "success");
+                            flash("Password Changed", "success");
                         } else {
                             flash("Current password is invalid", "warning");
                         }

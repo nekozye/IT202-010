@@ -14,3 +14,28 @@ function flash(message = "", color = "info") {
     //add the element to the DOM (if we don't it merely exists in memory)
     flash.appendChild(outerDiv);
 }
+
+function is_valid_email(email)
+{
+    let regex = new RegExp('^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$');
+    if (regex.test(email))
+    {
+        return true;
+    }
+        return false;
+}
+
+function is_valid_password(password)
+{
+    return password.length >= 8;
+}
+
+function is_valid_username(username)
+{
+    let regex = new RegExp('^[a-z0-9_-]{3,16}$');
+    if (regex.test(username))
+    {
+        return true;
+    }
+        return false;
+}
