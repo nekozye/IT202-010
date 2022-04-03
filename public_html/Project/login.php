@@ -56,25 +56,45 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         //flash("Welcome, $email");
         //TODO 4
         $db = getDB();
-        $stmt = $db->prepare("SELECT id, email, username, password from Users 
-        where email = :email");
+        $stmt = $db->prepare("SELECT id, email, username, password from Users where email = :email");
         try {
-            $r = $stmt->execute([":email" => $email]);
-            if ($r) {
-                $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                if ($user) {
-                    $hash = $user["password"];
+            $stmt->execute([":email" => $email]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user) {
+                $hash = $user["password"];
+                
+                if (password_verify($password, $hash)) {
+                    flash("Login Successful!", "success");
                     unset($user["password"]);
-                    if (password_verify($password, $hash)) {
-                        $_SESSION["user"] = $user; //sets our session data from db
-                        flash("Welcome, " . get_username());
-                        die(header("Location: home.php"));
+
+
+                    //saving the user information
+                    $_SESSION["user"] = $user;
+
+                    
+
+                    //setup for user role setup
+
+                    $stmt = $db->prepare("SELECT Roles.name FROM Roles 
+                    JOIN UserRoles on Roles.id = UserRoles.role_id 
+                    WHERE UserRoles.user_id = :user_id and Roles.is_active = 1 and UserRoles.is_active = 1");
+
+                    $stmt->execute([":user_id" => $user["id"]]);
+                    $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    if ($roles) {
+                        $_SESSION["user"]["roles"] = $roles;
                     } else {
-                        flash("Invalid password");
+                        $_SESSION["user"]["roles"] = [];
                     }
+
+                    die(header("Location: home.php"));
                 } else {
-                    flash("Email not found");
+                    flash("Password does not match", "warning");
                 }
+            } else {
+                flash("Email not found" , "warning");
             }
         } catch (Exception $e) {
             flash("<pre>" . var_export($e, true) . "</pre>");
@@ -82,5 +102,5 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     }
 }
 ?>
-<?php 
-require(__DIR__."/../../partials/flash.php");
+<?php
+require(__DIR__ . "/../../partials/flash.php");
