@@ -18,65 +18,62 @@
 
 - Milestone 1
   - [x] User will be able to register a new account
+  -  Link to related .md file:<a href="https://mt85-prod.herokuapp.com/Project/register.php">
     - [x] Form Fields
       - [x] Username, email, password, confirm password
-      <img src="https://github.com/nekozye/IT202-010/blob/Milestone1/pictures/Project/register/register-blank.png?raw=true">
       - [x] Email is required and must be validated
-      <img src="https://github.com/nekozye/IT202-010/blob/Milestone1/pictures/Project/register/emailrequiredregister.png?raw=true">
       - [x] Username is required
-      <img src="https://github.com/nekozye/IT202-010/blob/Milestone1/pictures/Project/register/usernamerequiredregister.png?raw=true">
-      <img src="https://github.com/nekozye/IT202-010/blob/Milestone1/pictures/Project/register/usernamevalidateregister.png?raw=true">
       - [x] Confirm password's match
-      <img src="https://github.com/nekozye/IT202-010/blob/Milestone1/pictures/Project/register/confirmpasswordmatchregister.png?raw=true">
     - [x] Users Table
       - [x] ID, username, email, password (60 characters), created, modified   
     - [x] Password must be hashed (plain text passwords will lose points)
     - [x] Email should be unique
     - [x] Username should be unique
-    
-
-
     - [x] System should let user know if username or email is taken and allow the user to correct the error without wiping/clearing the form
       - [x] The only fields that may be cleared are the password fields 
 
   - [x] User will be able to login to their account (given they enter the correct credentials)
+  -  Link to related .md file:<a href="https://mt85-prod.herokuapp.com/Project/login.php">
     - [x] Form
       - [x] User can login with email or username
         - [x] This can be done as a single field or as two separate fields
       - [x] Password is required
-    - [ ] User should see friendly error messages when an account either doesn’t exist or if passwords don’t match
-    - [ ] Logging in should fetch the user’s details (and roles) and save them into the session.
-    - [ ] User will be directed to a landing page upon login
-      - [ ] This is a protected page (non-logged in users shouldn’t have access)
-      - [ ] This can be home, profile, a dashboard, etc
+    - [x] User should see friendly error messages when an account either doesn’t exist or if passwords don’t match
+    - [x] Logging in should fetch the user’s details (and roles) and save them into the session.
+    - [x] User will be directed to a landing page upon login
+      - [x] This is a protected page (non-logged in users shouldn’t have access)
+      - [x] This can be home, profile, a dashboard, etc
 
-  - [ ] User will be able to logout
-      - [ ] Logging out will redirect to login page
-      - [ ] User should see a message that they’ve successfully logged out
-      - [ ] Session should be destroyed (so the back button doesn’t allow them access back in)
+  - [x] User will be able to logout
+  -  Link to related .md file:<a href="https://mt85-prod.herokuapp.com/Project/logout.php">
+      - [x] Logging out will redirect to login page
+      - [x] User should see a message that they’ve successfully logged out
+      - [x] Session should be destroyed (so the back button doesn’t allow them access back in)
       
-  - [ ] Basic security rules implemented
-      - [ ] Authentication:
-          - [ ] Function to check if user is logged in
-          - [ ] Function should be called on appropriate pages that only allow logged in users
-      - [ ] Roles/Authorization:
-          - [ ] Have a roles table (see below)
+  - [x] Basic security rules implemented
+      - [x] Authentication:
+          - [x] Function to check if user is logged in
+          - [x] Function should be called on appropriate pages that only allow logged in users
+      - [x] Roles/Authorization:
+          - [x] Have a roles table (see below)
 
-  - [ ] Basic Roles implemented
-      - [ ] Have a <span style="text-decoration:underline;">Roles</span> table  (id, name, description, is_active, modified, created)
-      - [ ] Have a <span style="text-decoration:underline;">User Roles</span> table (id, user_id, role_id, is_active, created, modified)
-      - [ ] Include a function to check if a user has a specific role (we won’t use it for this milestone but it should be usable in the future)
+  - [x] Basic Roles implemented
+      - [x] Have a <span style="text-decoration:underline;">Roles</span> table  (id, name, description, is_active, modified, created)
+      - [x] Have a <span style="text-decoration:underline;">User Roles</span> table (id, user_id, role_id, is_active, created, modified)
+      - [x] Include a function to check if a user has a specific role (we won’t use it for this milestone but it should be usable in the future)
 
-  - [ ] Site should have basic styles/theme applied; everything should be styled
-      - [ ] I.e., forms/input, navigation bar, etc
+  - [x] Site should have basic styles/theme applied; everything should be styled
+      - [x] I.e., forms/input, navigation bar, etc
 
-  - [ ] Any output messages/errors should be “user friendly”
-      - [ ] Any technical errors or debug output displayed will result in a loss of points
+  - [x] Any output messages/errors should be “user friendly”
+      - [x] Any technical errors or debug output displayed will result in a loss of points
 
-  - [ ] User will be able to see their profile
-      - [ ] Email, username, etc
+  - [x] User will be able to see their profile
+  -  Link to related .md file:<a href="https://mt85-prod.herokuapp.com/Project/profile.php">
+      - [x] Email, username, etc
       
   - [ ] User will be able to edit their profile
+  -  Link to related .md file:<a href="https://mt85-prod.herokuapp.com/Project/profile.php">
       - [ ] Changing username/email should properly check to see if it’s available before allowing the change
       - [ ] Any other fields should be properly validated
       - [ ] Allow password reset (only if the existing correct password is provided)
