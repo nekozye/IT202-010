@@ -56,8 +56,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         //flash("Welcome, $email");
         //TODO 4
         $db = getDB();
-        $stmt = $db->prepare("SELECT id, email, username, password from Users 
-        where email = :email");
+        $stmt = $db->prepare("SELECT id, email, username, password from Users where email = :email");
         try {
             $stmt->execute([":email" => $email]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -73,10 +72,15 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                     //saving the user information
                     $_SESSION["user"] = $user;
 
+                    
+
                     //setup for user role setup
 
-                    $stmt = $db->prepare("SELECT Roles.name FROM Roles JOIN UserRoles on Roles.id = UserRoles.role_id where UserRoles.user_id = :user_id and Roles.is_active = 1 and UserRoles.is_active = 1");
-                    $stmt->execute([":user_id" => $result["user_id"]]);
+                    $stmt = $db->prepare("SELECT Roles.name FROM Roles 
+                    JOIN UserRoles on Roles.id = UserRoles.role_id 
+                    WHERE UserRoles.user_id = :user_id and Roles.is_active = 1 and UserRoles.is_active = 1");
+
+                    $stmt->execute([":user_id" => $user["id"]]);
                     $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     if ($roles) {
