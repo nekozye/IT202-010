@@ -3,10 +3,10 @@
 ?>
 <h1>Home</h1>
 <?php
-    if(isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])){
-    echo "Welcome, " . $_SESSION["user"]["email"]; 
-    }
-    else{
-    echo "You're not logged in";
+//edited to use user_helpers.php
+    if(is_logged_in(true)){
+        error_log("session data: " . var_export($_SESSION, true));
     }
 ?>
+
+<?php require_once(__DIR__."/../../partials/flash.php"); ?>
