@@ -15,27 +15,29 @@ function flash(message = "", color = "info") {
     flash.appendChild(outerDiv);
 }
 
-function is_valid_email(email)
+function refresh_flash()
 {
-    let regex = new RegExp('^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$');
-    if (regex.test(email))
-    {
-        return true;
-    }
-        return false;
+    let flash = document.getElementById("flash");
+    flash.innerHTML = "";
 }
 
-function is_valid_password(password)
-{
-    return password.length >= 8;
-}
-
-function is_valid_username(username)
-{
-    let regex = new RegExp('^[a-z0-9_-]{3,16}$');
-    if (regex.test(username))
-    {
+function validate_email(inputText) {
+    var mailformat = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (inputText.match(mailformat)) {
         return true;
     }
+    else {
         return false;
+    }
+}
+
+function validate_username(inputText)
+{
+    var unameFormat = /^[a-z0-9_-]{3,30}$/;
+    if (inputText.match(unameFormat)) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

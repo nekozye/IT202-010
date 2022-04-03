@@ -5,11 +5,11 @@ reset_session();
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email</label>
-        <input type="email" name="email" required />
+        <input type="email" id="useremail" name="email" required />
     </div>
     <div>
         <label for="username">Username</label>
-        <input type="text" name="username" required maxlength="30" />
+        <input type="text" id="dsusername" name="username" required maxlength="30" />
     </div>
     <div>
         <label for="pw">Password</label>
@@ -17,17 +17,67 @@ reset_session();
     </div>
     <div>
         <label for="confirm">Confirm</label>
-        <input type="password" name="confirm" required minlength="8" />
+        <input type="password" id="confirmpw" name="confirm" required minlength="8" />
     </div>
     <input type="submit" value="Register" />
 </form>
+
+
 <script src="<?php echo get_url('helpers.js'); ?>"></script>
 
 <script>
     function validate(form) {
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
-        return true;
+
+        let useremail = form.useremail;
+        let username = form.dsusername;
+        let password = form.pw;
+        let confirm = form.confirmpw;
+
+        let isValid = true;
+
+        refresh_flash();
+        
+        if((useremail.value === undefined)) { isValid = false; flash("Requires Email","danger");}
+        if((username.value === undefined)) { isValid = false; flash("Requires Username","danger");}
+        if((password.value === undefined)) { isValid = false; flash("Requires Password","danger");}
+        if((confirm.value === undefined)) { isValid = false; flash("Requires Confirm","danger");}
+
+        if(!isValid)
+        {
+            return false;
+        }
+
+        if(!validate_email(useremail.value))
+        {
+            isValid = false;
+            flash("Email is not Valid", "danger");
+        }
+
+        if(!validate_username(username.value))
+        {
+            isValid = false;
+            flash("Username must only contain 3-30 characters a-z, 0-9, _, or -", "danger");
+        }
+
+        if(password.value.length < 8)
+        {
+            isValid = false;
+            flash("Password is too short", "danger");
+        }
+
+        
+
+        if(confirm.value != password.value)
+        {
+            isValid = false;
+            flash("Password and Confirm must match.", "danger");
+        }
+
+
+        document.blur();
+        return isValid;
     }
 </script>
 

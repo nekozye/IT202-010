@@ -17,25 +17,33 @@
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-  - [ ] User will be able to register a new account
-    - [ ] Form Fields
-      - [ ] Username, email, password, confirm password
-      - [ ] Email is required and must be validated
-      - [ ] Username is required
-      - [ ] Confirm password's match
-    - [ ] Users Table
-      - [ ] ID, username, email, password (60 characters), created, modified
-    - [ ] Password must be hashed (plain text passwords will lose points)
-    - [ ] Email should be unique
-    - [ ] Username should be unique
-    - [ ] System should let user know if username or email is taken and allow the user to correct the error without wiping/clearing the form
-      - [ ] The only fields that may be cleared are the password fields 
+  - [x] User will be able to register a new account
+    - [x] Form Fields
+      - [x] Username, email, password, confirm password
+      <img src="https://github.com/nekozye/IT202-010/blob/Milestone1/pictures/Project/register/register-blank.png?raw=true">
+      - [x] Email is required and must be validated
+      <img src="https://github.com/nekozye/IT202-010/blob/Milestone1/pictures/Project/register/emailrequiredregister.png?raw=true">
+      - [x] Username is required
+      <img src="https://github.com/nekozye/IT202-010/blob/Milestone1/pictures/Project/register/usernamerequiredregister.png?raw=true">
+      <img src="https://github.com/nekozye/IT202-010/blob/Milestone1/pictures/Project/register/usernamevalidateregister.png?raw=true">
+      - [x] Confirm password's match
+      <img src="https://github.com/nekozye/IT202-010/blob/Milestone1/pictures/Project/register/confirmpasswordmatchregister.png?raw=true">
+    - [x] Users Table
+      - [x] ID, username, email, password (60 characters), created, modified   
+    - [x] Password must be hashed (plain text passwords will lose points)
+    - [x] Email should be unique
+    - [x] Username should be unique
+    
 
-  - [ ] User will be able to login to their account (given they enter the correct credentials)
-    - [ ] Form
-      - [ ] User can login with email or username
-        - [ ] This can be done as a single field or as two separate fields
-      - [ ] Password is required
+
+    - [x] System should let user know if username or email is taken and allow the user to correct the error without wiping/clearing the form
+      - [x] The only fields that may be cleared are the password fields 
+
+  - [x] User will be able to login to their account (given they enter the correct credentials)
+    - [x] Form
+      - [x] User can login with email or username
+        - [x] This can be done as a single field or as two separate fields
+      - [x] Password is required
     - [ ] User should see friendly error messages when an account either doesn’t exist or if passwords don’t match
     - [ ] Logging in should fetch the user’s details (and roles) and save them into the session.
     - [ ] User will be directed to a landing page upon login

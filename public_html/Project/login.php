@@ -4,7 +4,7 @@ require(__DIR__ . "/../../partials/nav.php");
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email</label>
-        <input type="email" name="email" required />
+        <input type="email" id="useremail" name="email" required />
     </div>
     <div>
         <label for="pw">Password</label>
@@ -17,11 +17,42 @@ require(__DIR__ . "/../../partials/nav.php");
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
 
-        
+        let useremail = form.useremail;
+        let password = form.pw;
 
-        
+        let isValid = true;
 
-        return true;
+        refresh_flash();
+        
+        if((useremail.value === undefined)) { isValid = false; flash("Requires Email","danger");}
+        if((password.value === undefined)) { isValid = false; flash("Requires Password","danger");}
+
+        if(!isValid)
+        {
+            return false;
+        }
+
+        if(!validate_email(useremail.value))
+        {
+            isValid = false;
+            flash("Email is not Valid", "danger");
+        }
+
+        if(password.value.length < 8)
+        {
+            isValid = false;
+            flash("Password is too short", "danger");
+        }
+
+        if(!isValid)
+        {
+            password.value = "";
+        }
+
+        document.blur();
+
+        return isValid;
+
     }
 </script>
 <?php
