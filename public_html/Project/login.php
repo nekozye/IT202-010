@@ -44,11 +44,6 @@ require(__DIR__ . "/../../partials/nav.php");
             flash("Password is too short", "danger");
         }
 
-        if(!isValid)
-        {
-            password.value = "";
-        }
-
         document.blur();
 
         return isValid;
