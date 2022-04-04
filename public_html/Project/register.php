@@ -1,114 +1,149 @@
 <?php
-  require(__DIR__."/../../partials/nav.php");
+require(__DIR__ . "/../../partials/nav.php");
+reset_session();
 ?>
-
 <form onsubmit="return validate(this)" method="POST">
-  <div>
-    <label for="email">Email</label>
-    <input type="email" name="email" required />
-  </div>
-  <div>
-    <label for="pw">Password</label>
-    <input type="password" id="pw" name="password" required minlength="8" />
-  </div>
-  <div>
-    <label for="confirm">Confirm</label>
-    <input type="password" name="confirm" required minlength="8" />
-  </div>
-  <input type="submit" value="Register" />
+    <div>
+        <label for="email">Email</label>
+        <input type="email" id="useremail" name="email" required />
+    </div>
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="dsusername" name="username" required maxlength="30" />
+    </div>
+    <div>
+        <label for="pw">Password</label>
+        <input type="password" id="pw" name="password" required minlength="8" />
+    </div>
+    <div>
+        <label for="confirm">Confirm</label>
+        <input type="password" id="confirmpw" name="confirm" required minlength="8" />
+    </div>
+    <input type="submit" value="Register" />
 </form>
+
+
+<script src="<?php echo get_url('helpers.js'); ?>"></script>
+
 <script>
-  function validate(form) {
-    //TODO 1: implement JavaScript validation
-    // Javascript can be disabled easily, so make sure to validate on server side
-    //ensure it returns false for an error and true for success
-    //validation of special cases
+    function validate(form) {
+        //TODO 1: implement JavaScript validation
+        //ensure it returns false for an error and true for success
 
-    if(count($_POST) == 0 || !isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["confirm"]))
-    {
-      return false;
+        let useremail = form.useremail;
+        let username = form.dsusername;
+        let password = form.pw;
+        let confirm = form.confirmpw;
+
+        let isValid = true;
+
+        refresh_flash();
+        
+        if((useremail.value === undefined)) { isValid = false; flash("Requires Email","danger");}
+        if((username.value === undefined)) { isValid = false; flash("Requires Username","danger");}
+        if((password.value === undefined)) { isValid = false; flash("Requires Password","danger");}
+        if((confirm.value === undefined)) { isValid = false; flash("Requires Confirm","danger");}
+
+        if(!isValid)
+        {
+            return false;
+        }
+
+        if(!validate_email(useremail.value))
+        {
+            isValid = false;
+            flash("Email is not Valid", "danger");
+        }
+
+        if(!validate_username(username.value))
+        {
+            isValid = false;
+            flash("Username must only contain 3-30 characters a-z, 0-9, _, or -", "danger");
+        }
+
+        if(password.value.length < 8)
+        {
+            isValid = false;
+            flash("Password is too short", "danger");
+        }
+
+        
+
+        if(confirm.value != password.value)
+        {
+            isValid = false;
+            flash("Password and Confirm must match.", "danger");
+        }
+
+
+        document.blur();
+        return isValid;
     }
-    
-    return true;
-  }
 </script>
-<?php
 
-  if(count($_POST) == 0)
-  {
-    return;
-  }
-//TODO 2: assign the post value for easier access
-  if(isset($_POST["email"])&&isset($_POST["password"])&&isset($_POST["confirm"]))
-  {
+<?php
+//TODO 2: add PHP Code
+if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm"])) {
     $email = se($_POST, "email", "", false);
     $password = se($_POST, "password", "", false);
-    $confirm = se($_POST, "confirm", "", false);
-  };
-
-  //TODO 3: validation on php side
-  $has_error = false;
-
-
-  //Email Validation
-  if(empty($email))
-  {
-    echo "Email cannot be blank.";
-    $has_error = true;
-  }
-
-  $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-
-  if(!filter_var($email,FILTER_SANITIZE_EMAIL))
-  {
-    echo "Invalid Email Address.";
-    $has_error = true;
-  }
-
-
-  //Password Validation
-  if(empty($password))
-  {
-    echo "Password cannot be blank.";
-    $has_error = true;
-  }
-  if(empty($confirm))
-  {
-    echo "Please re-enter the password in confirm slot.";
-    $has_error = true;
-  }
-  if(strlen($password) < 8)
-  {
-    echo "Password is too short.";
-    $has_error = true;
-  }
-  if(strlen($password) > 0 && $password !== $confirm)
-  {
-    echo "The confirm slot must match password.";
-    $has_error = true;
-  }
-
-  
-  if(!$has_error)
-  {
-    echo "Welcome, $email";
-
-    //password hashing
-    $pw_hash = password_hash($password, PASSWORD_BCRYPT);
-    $db = getDB();
-
-    $prep_stmt = $db->prepare("INSERT INTO Users(email, password) VALUES(:email, :password)");
-    try{
-      $prep_stmt->execute([":email" => $email, ":password" => $pw_hash ]);
-      echo "Registration Sucessful!";
+    $confirm = se(
+        $_POST,
+        "confirm",
+        "",
+        false
+    );
+    $username = se($_POST, "username", "", false);
+    //TODO 3
+    $hasError = false;
+    if (empty($email)) {
+        flash("Email must not be empty", "danger");
+        $hasError = true;
     }
-    catch(Exception $e)
-    {
-      echo "There was a problem registering.";
-      echo "<pre>" .var_export($e,true)."</pre>";
+    //sanitize
+    $email = sanitize_email($email);
+    //validate
+    if (!is_valid_email($email)) {
+        flash("Invalid email address", "danger");
+        $hasError = true;
     }
-  }
-  
+    if (!is_valid_username($username)) {
+        flash("Username must only contain 3-30 characters a-z, 0-9, _, or -", "danger");
+        $hasError = true;
+    }
+    if (empty($password)) {
+        flash("password must not be empty", "danger");
+        $hasError = true;
+    }
+    if (empty($confirm)) {
+        flash("Confirm password must not be empty", "danger");
+        $hasError = true;
+    }
+    if (!is_valid_password($password)) {
+        flash("Password too short", "danger");
+        $hasError = true;
+    }
+    if (
+        strlen($password) > 0 && $password !== $confirm
+    ) {
+        flash("Password and Confirm must match", "danger");
+        $hasError = true;
+    }
+    if (!$hasError) {
+        //TODO 4
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $db = getDB();
+        $stmt = $db->prepare("INSERT INTO Users (email, password, username) VALUES(:email, :password, :username)");
+        try {
+            $stmt->execute([":email" => $email, ":password" => $hash, ":username" => $username]);
+            flash("Successfully registered!", "success");
 
-  
+            die(header("Location: login.php"));
+        } catch (Exception $e) {
+            users_check_duplicate($e->errorInfo);
+        }
+    }
+}
+?>
+<?php
+require(__DIR__ . "/../../partials/flash.php");
 ?>

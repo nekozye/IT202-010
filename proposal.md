@@ -17,58 +17,63 @@
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-  - [ ] User will be able to register a new account
-    - [ ] Form Fields
-      - [ ] Username, email, password, confirm password
-      - [ ] Email is required and must be validated
-      - [ ] Username is required
-      - [ ] Confirm password's match
-    - [ ] Users Table
-      - [ ] ID, username, email, password (60 characters), created, modified
-    - [ ] Password must be hashed (plain text passwords will lose points)
-    - [ ] Email should be unique
-    - [ ] Username should be unique
-    - [ ] System should let user know if username or email is taken and allow the user to correct the error without wiping/clearing the form
-      - [ ] The only fields that may be cleared are the password fields 
+  - [x] \(04/03/2022 of completion) \(04/03/2022 of completion) User will be able to register a new account
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/register.php">
+    - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Form Fields
+      - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Username, email, password, confirm password
+      - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Email is required and must be validated
+      - [x] \(04/03/2022 of completion) Username is required
+      - [x] \(04/03/2022 of completion) Confirm password's match
+    - [x] \(04/03/2022 of completion) Users Table
+      - [x] \(04/03/2022 of completion) ID, username, email, password (60 characters), created, modified   
+    - [x] \(04/03/2022 of completion) Password must be hashed (plain text passwords will lose points)
+    - [x] \(04/03/2022 of completion) Email should be unique
+    - [x] \(04/03/2022 of completion) Username should be unique
+    - [x] \(04/03/2022 of completion) System should let user know if username or email is taken and allow the user to correct the error without wiping/clearing the form
+      - [x] \(04/03/2022 of completion) The only fields that may be cleared are the password fields 
 
-  - [ ] User will be able to login to their account (given they enter the correct credentials)
-    - [ ] Form
-      - [ ] User can login with email or username
-        - [ ] This can be done as a single field or as two separate fields
-      - [ ] Password is required
-    - [ ] User should see friendly error messages when an account either doesn’t exist or if passwords don’t match
-    - [ ] Logging in should fetch the user’s details (and roles) and save them into the session.
-    - [ ] User will be directed to a landing page upon login
-      - [ ] This is a protected page (non-logged in users shouldn’t have access)
-      - [ ] This can be home, profile, a dashboard, etc
+  - [x] \(04/03/2022 of completion) User will be able to login to their account (given they enter the correct credentials)
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/login.php">
+    - [x] \(04/03/2022 of completion) Form
+      - [x] \(04/03/2022 of completion) User can login with email or username
+        - [x] \(04/03/2022 of completion) This can be done as a single field or as two separate fields
+      - [x] \(04/03/2022 of completion) Password is required
+    - [x] \(04/03/2022 of completion) User should see friendly error messages when an account either doesn’t exist or if passwords don’t match
+    - [x] \(04/03/2022 of completion) Logging in should fetch the user’s details (and roles) and save them into the session.
+    - [x] \(04/03/2022 of completion) User will be directed to a landing page upon login
+      - [x] \(04/03/2022 of completion) This is a protected page (non-logged in users shouldn’t have access)
+      - [x] \(04/03/2022 of completion) This can be home, profile, a dashboard, etc
 
-  - [ ] User will be able to logout
-      - [ ] Logging out will redirect to login page
-      - [ ] User should see a message that they’ve successfully logged out
-      - [ ] Session should be destroyed (so the back button doesn’t allow them access back in)
+  - [x] \(04/03/2022 of completion) User will be able to logout
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/logout.php">
+      - [x] \(04/03/2022 of completion) Logging out will redirect to login page
+      - [x] \(04/03/2022 of completion) User should see a message that they’ve successfully logged out
+      - [x] \(04/03/2022 of completion) Session should be destroyed (so the back button doesn’t allow them access back in)
       
-  - [ ] Basic security rules implemented
-      - [ ] Authentication:
-          - [ ] Function to check if user is logged in
-          - [ ] Function should be called on appropriate pages that only allow logged in users
-      - [ ] Roles/Authorization:
-          - [ ] Have a roles table (see below)
+  - [x] \(04/03/2022 of completion) Basic security rules implemented
+      - [x] \(04/03/2022 of completion) Authentication:
+          - [x] \(04/03/2022 of completion) Function to check if user is logged in
+          - [x] \(04/03/2022 of completion) Function should be called on appropriate pages that only allow logged in users
+      - [x] \(04/03/2022 of completion) Roles/Authorization:
+          - [x] \(04/03/2022 of completion) Have a roles table (see below)
 
-  - [ ] Basic Roles implemented
-      - [ ] Have a <span style="text-decoration:underline;">Roles</span> table  (id, name, description, is_active, modified, created)
-      - [ ] Have a <span style="text-decoration:underline;">User Roles</span> table (id, user_id, role_id, is_active, created, modified)
-      - [ ] Include a function to check if a user has a specific role (we won’t use it for this milestone but it should be usable in the future)
+  - [x] \(04/03/2022 of completion) Basic Roles implemented
+      - [x] \(04/03/2022 of completion) Have a <span style="text-decoration:underline;">Roles</span> table  (id, name, description, is_active, modified, created)
+      - [x] \(04/03/2022 of completion) Have a <span style="text-decoration:underline;">User Roles</span> table (id, user_id, role_id, is_active, created, modified)
+      - [x] \(04/03/2022 of completion) Include a function to check if a user has a specific role (we won’t use it for this milestone but it should be usable in the future)
 
-  - [ ] Site should have basic styles/theme applied; everything should be styled
-      - [ ] I.e., forms/input, navigation bar, etc
+  - [x] \(04/03/2022 of completion) Site should have basic styles/theme applied; everything should be styled
+      - [x] \(04/03/2022 of completion) I.e., forms/input, navigation bar, etc
 
-  - [ ] Any output messages/errors should be “user friendly”
-      - [ ] Any technical errors or debug output displayed will result in a loss of points
+  - [x] \(04/03/2022 of completion) Any output messages/errors should be “user friendly”
+      - [x] \(04/03/2022 of completion) Any technical errors or debug output displayed will result in a loss of points
 
-  - [ ] User will be able to see their profile
-      - [ ] Email, username, etc
+  - [x] \(04/03/2022 of completion) User will be able to see their profile
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">
+      - [x] \(04/03/2022 of completion) Email, username, etc
       
   - [ ] User will be able to edit their profile
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">
       - [ ] Changing username/email should properly check to see if it’s available before allowing the change
       - [ ] Any other fields should be properly validated
       - [ ] Allow password reset (only if the existing correct password is provided)
@@ -105,7 +110,7 @@
      - A code snippet screenshot or reference via GitHub markdown may be used as an alternative for evidence that can't be captured on the screen
   4. Update the checklist of the proposal.md file for each feature this branch is completing (ideally should be 1 branch/pull request per feature, but some cases may have multiple)
     - Basically add an x to the checkbox markdown along with a date after
-      - (i.e.,   - [x] (mm/dd/yy) ....) See Template above
+      - (i.e.,   - [x] \(mm/dd/yy) ....) See Template above
     - Add the pull request link as a new indented line for each line item being completed
     - Attach any related issue items on the right-side panel
   5. Merge the Feature Branch into your Milestone branch (this should close the pull request and the attached issues)
