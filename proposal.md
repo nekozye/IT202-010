@@ -18,7 +18,7 @@
 
 - Milestone 1
   - [x] \(04/03/2022 of completion) \(04/03/2022 of completion) User will be able to register a new account
-  -  Link to related .md file:<a href="https://mt85-prod.herokuapp.com/Project/register.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/register.php">
     - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Form Fields
       - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Username, email, password, confirm password
       - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Email is required and must be validated
@@ -33,7 +33,7 @@
       - [x] \(04/03/2022 of completion) The only fields that may be cleared are the password fields 
 
   - [x] \(04/03/2022 of completion) User will be able to login to their account (given they enter the correct credentials)
-  -  Link to related .md file:<a href="https://mt85-prod.herokuapp.com/Project/login.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/login.php">
     - [x] \(04/03/2022 of completion) Form
       - [x] \(04/03/2022 of completion) User can login with email or username
         - [x] \(04/03/2022 of completion) This can be done as a single field or as two separate fields
@@ -45,7 +45,7 @@
       - [x] \(04/03/2022 of completion) This can be home, profile, a dashboard, etc
 
   - [x] \(04/03/2022 of completion) User will be able to logout
-  -  Link to related .md file:<a href="https://mt85-prod.herokuapp.com/Project/logout.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/logout.php">
       - [x] \(04/03/2022 of completion) Logging out will redirect to login page
       - [x] \(04/03/2022 of completion) User should see a message that they’ve successfully logged out
       - [x] \(04/03/2022 of completion) Session should be destroyed (so the back button doesn’t allow them access back in)
@@ -69,11 +69,11 @@
       - [x] \(04/03/2022 of completion) Any technical errors or debug output displayed will result in a loss of points
 
   - [x] \(04/03/2022 of completion) User will be able to see their profile
-  -  Link to related .md file:<a href="https://mt85-prod.herokuapp.com/Project/profile.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">
       - [x] \(04/03/2022 of completion) Email, username, etc
       
   - [ ] User will be able to edit their profile
-  -  Link to related .md file:<a href="https://mt85-prod.herokuapp.com/Project/profile.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">
       - [ ] Changing username/email should properly check to see if it’s available before allowing the change
       - [ ] Any other fields should be properly validated
       - [ ] Allow password reset (only if the existing correct password is provided)
