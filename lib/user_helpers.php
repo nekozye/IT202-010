@@ -12,7 +12,7 @@ function console_log($output, $with_script_tags = true) {
 function is_logged_in($redirect = false, $destination = "login.php") {
     $isLoggedIn = isset($_SESSION["user"]);
     if ($redirect && !$isLoggedIn) {
-        flash("You must be logged in to view this page", "warning");
+        flash("You must be logged in to view this page", "danger");
         die(header("Location: $destination"));
     }
     return $isLoggedIn;

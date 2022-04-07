@@ -15,11 +15,6 @@ function flash(message = "", color = "info") {
     flash.appendChild(outerDiv);
 }
 
-function refresh_flash()
-{
-    let flash = document.getElementById("flash");
-    flash.innerHTML = "";
-}
 
 function validate_email(inputText) {
     var mailformat = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

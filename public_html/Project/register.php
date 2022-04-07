@@ -33,14 +33,13 @@ reset_session();
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
 
-        let useremail = form.useremail;
-        let username = form.dsusername;
-        let password = form.pw;
-        let confirm = form.confirmpw;
+        let useremail = form.email;
+        let username = form.username;
+        let password = form.password;
+        let confirm = form.confirm;
 
         let isValid = true;
 
-        refresh_flash();
         
         if((useremail.value === undefined)) { isValid = false; flash("Requires Email","danger");}
         if((username.value === undefined)) { isValid = false; flash("Requires Username","danger");}
@@ -79,7 +78,6 @@ reset_session();
         }
 
 
-        document.blur();
         return isValid;
     }
 </script>
