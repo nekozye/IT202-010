@@ -1,36 +1,34 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
-<form onsubmit="return validate(this)" method="POST">
-    <div>
-        <label for="email">Email</label>
-        <input type="email" id="useremail" name="email" required />
-    </div>
-    <div>
-        <label for="pw">Password</label>
-        <input type="password" id="pw" name="password" required minlength="8" />
-    </div>
-    <input type="submit" value="Login" />
-</form>
+<div class="container-fluid">
+    <h1>Login</h1>
+    <form onsubmit="return validate(this)" method="POST">
+        <div class="mb-3">
+            <label class="form-label" for="email">Username/Email</label>
+            <input class="form-control" type="text" id="email" name="email" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="pw">Password</label>
+            <input class="form-control" type="password" id="pw" name="password" required minlength="8" />
+        </div>
+        <input type="submit" class="mt-3 btn btn-primary" value="Login" />
+    </form>
+</div>
+
 <script>
     function validate(form) {
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
 
-        let useremail = form.useremail;
-        let password = form.pw;
+        let useremail = form.email;
+        let password = form.password;
 
         let isValid = true;
 
-        refresh_flash();
         
         if((useremail.value === undefined)) { isValid = false; flash("Requires Email","danger");}
         if((password.value === undefined)) { isValid = false; flash("Requires Password","danger");}
-
-        if(!isValid)
-        {
-            return false;
-        }
 
         if(!validate_email(useremail.value))
         {
@@ -44,8 +42,6 @@ require(__DIR__ . "/../../partials/nav.php");
             flash("Password is too short", "danger");
         }
 
-        document.blur();
-
         return isValid;
 
     }
@@ -55,6 +51,8 @@ require(__DIR__ . "/../../partials/nav.php");
 if (isset($_POST["email"]) && isset($_POST["password"])) {
     $email = se($_POST, "email", "", false);
     $password = se($_POST, "password", "", false);
+
+    flash( "failsafe1","primary");
 
     //TODO 3
     $hasError = false;
@@ -71,15 +69,15 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         $hasError = true;
     }*/
     if (!is_valid_email($email)) {
-        flash("Invalid email address");
+        flash("Invalid email address", "warning");
         $hasError = true;
     }
     if (empty($password)) {
-        flash("password must not be empty");
+        flash("password must not be empty", "warning");
         $hasError = true;
     }
     if (!is_valid_password($password)) {
-        flash("Password too short");
+        flash("Password too short", "warning");
         $hasError = true;
     }
     if (!$hasError) {
@@ -87,15 +85,19 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         //TODO 4
         $db = getDB();
         $stmt = $db->prepare("SELECT id, email, username, password from Users where email = :email");
+
+        
         try {
             $stmt->execute([":email" => $email]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            
 
             if ($user) {
                 $hash = $user["password"];
                 
                 if (password_verify($password, $hash)) {
-                    flash("Login Successful!", "success");
+
+                    flash("Login Successful!" , "success");
                     unset($user["password"]);
 
 
@@ -119,7 +121,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                         $_SESSION["user"]["roles"] = [];
                     }
 
-                    die(header("Location: home.php"));
+                    die(header("Location: login.php"));
                 } else {
                     flash("Password does not match", "warning");
                 }
@@ -129,6 +131,9 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         } catch (Exception $e) {
             flash("<pre>" . var_export($e, true) . "</pre>");
         }
+    }
+    else{
+        flash("something has gone wrong","danger");
     }
 }
 ?>
