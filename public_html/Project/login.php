@@ -21,19 +21,25 @@ require(__DIR__ . "/../../partials/nav.php");
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
 
-        let useremail = form.email;
-        let password = form.password;
+        let useremail = form.useremail;
+        let password = form.pw;
 
         let isValid = true;
 
+        refresh_flash();
         
         if((useremail.value === undefined)) { isValid = false; flash("Requires Email","danger");}
         if((password.value === undefined)) { isValid = false; flash("Requires Password","danger");}
 
-        if(!validate_email(useremail.value))
+        if(!isValid)
+        {
+            return false;
+        }
+
+        if(!validate_email(useremail.value) && !validate_username(useremail.value))
         {
             isValid = false;
-            flash("Email is not Valid", "danger");
+            flash("Email or Username is not Valid", "danger");
         }
 
         if(password.value.length < 8)
@@ -41,6 +47,8 @@ require(__DIR__ . "/../../partials/nav.php");
             isValid = false;
             flash("Password is too short", "danger");
         }
+
+        document.blur();
 
         return isValid;
 
@@ -52,52 +60,56 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     $email = se($_POST, "email", "", false);
     $password = se($_POST, "password", "", false);
 
-    flash( "failsafe1","primary");
-
     //TODO 3
     $hasError = false;
     if (empty($email)) {
-        flash("Email must not be empty");
+        flash("Email/Username must not be empty");
         $hasError = true;
     }
-    //sanitize
-    //$email = filter_var($email, FILTER_SANITIZE_EMAIL);
-    $email = sanitize_email($email);
-    //validate
-    /*if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        flash("Invalid email address");
-        $hasError = true;
-    }*/
-    if (!is_valid_email($email)) {
-        flash("Invalid email address", "warning");
-        $hasError = true;
+
+
+    if (str_contains($email, "@")) {
+        //sanitize
+        //$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        $email = sanitize_email($email);
+        //validate
+        /*if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            flash("Invalid email address");
+            $hasError = true;
+        }*/
+        if (!is_valid_email($email)) {
+            flash("Invalid email address");
+            $hasError = true;
+        }
+    } else {
+        if (!is_valid_username($email)) {
+            flash("Invalid username");
+            $hasError = true;
+        }
     }
+
     if (empty($password)) {
-        flash("password must not be empty", "warning");
+        flash("password must not be empty");
         $hasError = true;
     }
     if (!is_valid_password($password)) {
-        flash("Password too short", "warning");
+        flash("Password too short");
         $hasError = true;
     }
     if (!$hasError) {
         //flash("Welcome, $email");
         //TODO 4
         $db = getDB();
-        $stmt = $db->prepare("SELECT id, email, username, password from Users where email = :email");
-
-        
+        $stmt = $db->prepare("SELECT id, email, username, password from Users where email = :email or username = :email");
         try {
             $stmt->execute([":email" => $email]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            
 
             if ($user) {
                 $hash = $user["password"];
                 
                 if (password_verify($password, $hash)) {
-
-                    flash("Login Successful!" , "success");
+                    flash("Login Successful!", "success");
                     unset($user["password"]);
 
 
@@ -121,7 +133,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                         $_SESSION["user"]["roles"] = [];
                     }
 
-                    die(header("Location: login.php"));
+                    die(header("Location: home.php"));
                 } else {
                     flash("Password does not match", "warning");
                 }
@@ -131,9 +143,6 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         } catch (Exception $e) {
             flash("<pre>" . var_export($e, true) . "</pre>");
         }
-    }
-    else{
-        flash("something has gone wrong","danger");
     }
 }
 ?>
