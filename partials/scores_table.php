@@ -8,6 +8,10 @@ if (!isset($duration)) {
     $duration = "day"; //choosing to default to day
 }
 
+if (!isset($separation)) {
+    $separation  = false; //choosing to default to false
+}
+
 if (in_array($duration, ["day", "week", "month", "lifetime"])) {
     $results = get_top_10($duration);
 } else if ($duration === "latest") {
@@ -42,7 +46,11 @@ switch ($duration) {
 
 
 ?>
-<div class="card bg-light">
+<?php if ($separation === true) : ?>
+    <div class="card bg-light inrow-class-multi">
+<?php else : ?>
+    <div class="card bg-light">
+<?php endif; ?>
     <div class="card-body">
         <div class="card-title">
             <div class="fw-bold fs-3">
@@ -50,7 +58,7 @@ switch ($duration) {
             </div>
         </div>
         <div class="card-text">
-            <table class="table">
+            <table class="table equidist-table" >
                 <?php if (count($results) == 0) : ?>
                     <p>No results to show</p>
                 <?php else : ?>

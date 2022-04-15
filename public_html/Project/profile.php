@@ -85,42 +85,63 @@ if (isset($_POST["save"])) {
 $email = get_user_email();
 $username = get_username();
 ?>
-<div class="container-fluid">
-    <h1>Profile</h1>
-    <div>
-        Best Score: <?php echo get_best_score(get_user_id()); ?>
+<div class="h-100">
+    <div class="fadeIn large-floating-wrapper-multiple rounded mx-auto align-items-center">
+        <div class="container-fluid">
+            <h1>Profile</h1>
+
+            <div class="bg-light rounded inrow-class-multi form-floating">
+                <div class="text-best-score">
+                    Best Score: <?php echo get_best_score(get_user_id()); ?>
+                </div>
+            </div>
+
+            <div class="bg-light rounded inrow-class-multi form-floating">
+                <?php
+                $duration = "latest";
+                require(__DIR__ . "/../../partials/scores_table.php");
+                ?>
+            </div>
+
+
+            <form method="POST" onsubmit="return validate(this);">
+                <div class="bg-light rounded inrow-class-multi form-floating">
+                    <h3>
+                        Email Edit
+                    </h3>
+                    <div class="mb-3">
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-control" type="email" name="email" id="email" value="<?php se($email); ?>" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="username">Username</label>
+                        <input class="form-control" type="text" name="username" id="username" value="<?php se($username); ?>" />
+                    </div>
+                </div>
+
+                <div class="bg-light rounded inrow-class-multi form-floating">
+                    <!-- DO NOT PRELOAD PASSWORD -->
+                    <h3>
+                        Password Reset
+                    </h3>
+                    <div class="mb-3">
+                        <label class="form-label" for="cp">Current Password</label>
+                        <input class="form-control" type="password" name="currentPassword" id="cp" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="np">New Password</label>
+                        <input class="form-control" type="password" name="newPassword" id="np" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="conp">Confirm Password</label>
+                        <input class="form-control" type="password" name="confirmPassword" id="conp" />
+                    </div>
+                    <input type="submit" class="mt-3 btn btn-primary" value="Update Profile" name="save" />
+                </div>
+            </form>
+
+        </div>
     </div>
-    <div>
-        <?php
-        $duration = "latest";
-        require(__DIR__ . "/../../partials/scores_table.php");
-        ?>
-    </div>
-    <form method="POST" onsubmit="return validate(this);">
-        <div class="mb-3">
-            <label class="form-label" for="email">Email</label>
-            <input class="form-control" type="email" name="email" id="email" value="<?php se($email); ?>" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="username">Username</label>
-            <input class="form-control" type="text" name="username" id="username" value="<?php se($username); ?>" />
-        </div>
-        <!-- DO NOT PRELOAD PASSWORD -->
-        <div class="mb-3">Password Reset</div>
-        <div class="mb-3">
-            <label class="form-label" for="cp">Current Password</label>
-            <input class="form-control" type="password" name="currentPassword" id="cp" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="np">New Password</label>
-            <input class="form-control" type="password" name="newPassword" id="np" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="conp">Confirm Password</label>
-            <input class="form-control" type="password" name="confirmPassword" id="conp" />
-        </div>
-        <input type="submit" class="mt-3 btn btn-primary" value="Update Profile" name="save" />
-    </form>
 </div>
 
 <script>

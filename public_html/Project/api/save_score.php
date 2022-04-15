@@ -27,13 +27,16 @@ function save_score($score, $echo = true)
             $stmt->execute([":s" => $score, ":uid" => get_user_id()]);
             $response["status"] = 200;
             $response["message"] = "Saved Score";
+            $response["message_type"] = "success";
             http_response_code(200);
         } catch (PDOException $e) {
             error_log("Error saving score: " . var_export($e, true));
             $response["message"] = "Error saving score details";
+            $response["message_type"] = "danger";
         }
     } else {
-        $response["message"] = "Cannot Save Data : Not logged in";
+        $response["message"] = "Data is not Saved: Please log in.";
+        $response["message_type"] = "warning";
         http_response_code(403);
     }
     if ($echo) {

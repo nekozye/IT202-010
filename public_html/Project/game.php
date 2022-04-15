@@ -4,9 +4,15 @@ require(__DIR__ . "/../../partials/nav.php");
 
 <script src="<?php echo get_url('helpers.js'); ?>"></script>
 
-<div style="text-align:center;">
-  <canvas id="canvas" width="400" height="600" tabindex="1">
-  </canvas>
+<div class="container h-100">
+  <div class="floating-wrapper mx-auto my-auto row align-items-center">
+    <div class="bg-secondary rounded form-floating">
+      <div style="text-align:center;">
+        <canvas id="canvas" width="400" height="600" tabindex="1">
+        </canvas>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -200,7 +206,7 @@ require(__DIR__ . "/../../partials/nav.php");
   // Show the game menu and instructions
   function menu() {
     erase();
-    context.fillStyle = '#000000';
+    context.fillStyle = '#FFFFFF';
     context.font = '36px Arial';
     context.textAlign = 'center';
     context.fillText('Shoot \'Em!', canvas.width / 2, canvas.height / 4);
@@ -232,7 +238,7 @@ require(__DIR__ . "/../../partials/nav.php");
     clearInterval(timeoutId);
     // Show the final score
     erase();
-    context.fillStyle = '#000000';
+    context.fillStyle = '#FFFFFF';
     context.font = '24px Arial';
     context.textAlign = 'center';
     context.fillText('Game Over. Final Score: ' + gameData.score, canvas.width / 2, canvas.height / 2);
@@ -241,15 +247,14 @@ require(__DIR__ . "/../../partials/nav.php");
     postData({
       type: "game_end_save",
       data: gameData.score
-    }).then(data => {
-      console.log(data);
+    }).then(response => {
+      console.log(response);
 
 
-      if(data.status === 200){
-        flash(data.message);
-      }
-      else{
-        flash(data.message,"danger");
+      if (response.status === 200) {
+        flash(response.message, response.message_type);
+      } else {
+        flash(response.message, response.message_type);
       }
     });
 
@@ -305,7 +310,7 @@ require(__DIR__ . "/../../partials/nav.php");
 
   // Clear the canvas
   function erase() {
-    context.fillStyle = '#FFFFFF';
+    context.fillStyle = '#1e0838';
     context.fillRect(0, 0, canvas.width, canvas.height);
   }
 
@@ -431,7 +436,7 @@ require(__DIR__ . "/../../partials/nav.php");
         shooting = false;
       }
       // Draw the bullet
-      context.fillStyle = '#0000FF';
+      context.fillStyle = '#FFFFFF';
       bullet.draw();
     }
 
@@ -473,13 +478,13 @@ require(__DIR__ . "/../../partials/nav.php");
 
 
     // Draw the score
-    context.fillStyle = '#000000';
+    context.fillStyle = '#FFFFFF';
     context.font = '24px Arial';
     context.textAlign = 'left';
     context.fillText('Score: ' + gameData.score, 1, 25)
 
     // Draw the Bomb Count
-    context.fillStyle = '#000000';
+    context.fillStyle = '#FFFFFF';
     context.font = '24px Arial';
     context.textAlign = 'left';
     context.fillText('Bomb: ' + gameData.leftBombCount, 1, 50)

@@ -1,19 +1,24 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
-<div class="container-fluid">
-    <h1>Login</h1>
-    <form onsubmit="return validate(this)" method="POST">
-        <div class="mb-3">
-            <label class="form-label" for="email">Username/Email</label>
-            <input class="form-control" type="text" id="email" name="email" required />
+<div class="container h-100">
+    <div class="fadeUp floating-wrapper mx-auto my-auto row align-items-center h-100">
+        <div class="bg-light rounded form-floating">
+            <form onsubmit="return validate(this)" method="POST">
+                <h1>Login</h1>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="email">Username/Email</label>
+                    <input class="form-control" type="text" id="email" name="email" required />
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="pw">Password</label>
+                    <input class="form-control" type="password" id="pw" name="password" required minlength="8" />
+                </div>
+                <input type="submit" class="mt-3 btn btn-primary" value="Login" />
+            </form>
         </div>
-        <div class="mb-3">
-            <label class="form-label" for="pw">Password</label>
-            <input class="form-control" type="password" id="pw" name="password" required minlength="8" />
-        </div>
-        <input type="submit" class="mt-3 btn btn-primary" value="Login" />
-    </form>
+    </div>
+
 </div>
 
 <script>
@@ -27,23 +32,26 @@ require(__DIR__ . "/../../partials/nav.php");
         let isValid = true;
 
         refresh_flash();
-        
-        if((useremail.value === undefined)) { isValid = false; flash("Requires Email","danger");}
-        if((password.value === undefined)) { isValid = false; flash("Requires Password","danger");}
 
-        if(!isValid)
-        {
+        if ((useremail.value === undefined)) {
+            isValid = false;
+            flash("Requires Email", "danger");
+        }
+        if ((password.value === undefined)) {
+            isValid = false;
+            flash("Requires Password", "danger");
+        }
+
+        if (!isValid) {
             return false;
         }
 
-        if(!validate_email(useremail.value) && !validate_username(useremail.value))
-        {
+        if (!validate_email(useremail.value) && !validate_username(useremail.value)) {
             isValid = false;
             flash("Email or Username is not Valid", "danger");
         }
 
-        if(password.value.length < 8)
-        {
+        if (password.value.length < 8) {
             isValid = false;
             flash("Password is too short", "danger");
         }
@@ -108,7 +116,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
             if ($user) {
                 $hash = $user["password"];
-                
+
                 if (password_verify($password, $hash)) {
                     flash("Login Successful!", "success");
                     unset($user["password"]);
@@ -117,7 +125,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                     //saving the user information
                     $_SESSION["user"] = $user;
 
-                    
+
 
                     //setup for user role setup
 
@@ -139,7 +147,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                     flash("Password does not match", "warning");
                 }
             } else {
-                flash("Email not found" , "warning");
+                flash("Email or Username not found", "warning");
             }
         } catch (Exception $e) {
             flash("<pre>" . var_export($e, true) . "</pre>");

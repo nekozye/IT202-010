@@ -1,0 +1,91 @@
+:root{
+    --bs-body-bg: #6b6b6b
+}
+
+:not(input){
+    cursor:default;
+    caret-color: transparent;
+}
+
+.floating-wrapper {
+    padding:30px;
+    max-width:40%;
+}
+
+.large-floating-wrapper{
+    padding:30px;
+    max-width:80%;
+    
+}
+
+.large-floating-wrapper-multiple{
+    padding:30px;
+    max-width:80%;
+    background-color:#888888;
+    margin:10px;
+}
+
+.form-floating{
+    padding:30px;
+}
+
+
+.inrow-class-multi{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.text-best-score{
+    font-size:30px;
+}
+
+.strech-table{
+    display:table;
+    table-layout: fixed;
+    width: 100%;
+    height: 50px;
+}
+
+.equidist-table > *{
+    display:table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.single-game{
+    margin-left:5px;
+    margin-right:5px;
+}
+
+
+/* Fade toolkit  https://stackoverflow.com/questions/4359627/stopping-a-css3-animation-on-last-frame */
+
+.fadeIn {
+    opacity: 1;
+    position: relative;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.fadeUp {
+    opacity: 1;
+    position: relative;
+    animation: fadeUp 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        top: 100px;
+    }
+    to {
+        opacity: 1;
+        top: 0px;
+    }
+} 
+
+

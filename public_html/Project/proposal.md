@@ -72,12 +72,12 @@
   -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">
       - [x] \(04/03/2022 of completion) Email, username, etc
       
-  - [X] User will be able to edit their profile
+  - [x] User will be able to edit their profile
   -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">
-      - [X] Changing username/email should properly check to see if it’s available before allowing the change
-      - [X] Any other fields should be properly validated
-      - [X] Allow password reset (only if the existing correct password is provided)
-          - [X] Hint: logic for the password check would be similar to login
+      - [x] Changing username/email should properly check to see if it’s available before allowing the change
+      - [x] Any other fields should be properly validated
+      - [x] Allow password reset (only if the existing correct password is provided)
+          - [x] Hint: logic for the password check would be similar to login
 
 - Milestone 2
   - [x] \(04/06/2022 of completion) Pick a simple game to implement, anything that generates a score that’s more advanced than a simple random number generator (may build off of a sample from the site shared in class for the HTML5 HW)
@@ -98,13 +98,13 @@
       - [x] Top 10 Monthly
       - [x] Top 10 Lifetime
       - [x] Scoreboards should show no more than 10 results; if there are no results a proper message should be displayed (i.e., “No [time period] scores to display”)
-  - [ ] Create a Homepage (index.php)
+  - [x]\(04/15/2022 of completion)Create a Homepage (index.php)
       - [x] Include a weekly, monthly, and lifetime scoreboard
           - [x] Scoreboards will show username, score, timestamp of when the score was received
           - [x] You may manually edit some score entries in the database to show proof each scoreboard output works
-      - [ ] Include a link to the game
-      - [ ] Include a description of your project/game
-      - [ ] Include a proper heading
+      - [x] Include a link to the game
+      - [x] Include a description of your project/game
+      - [x] Include a proper heading
 - Milestone 3
   - (duplicate template here for Milestone 1 features)
 - Milestone 4
