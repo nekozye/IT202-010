@@ -19,6 +19,7 @@
 - Milestone 1
   - [x] \(04/03/2022 of completion) \(04/03/2022 of completion) User will be able to register a new account
   -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/register.php">
+  Link</a>
     - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Form Fields
       - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Username, email, password, confirm password
       - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Email is required and must be validated
@@ -33,7 +34,7 @@
       - [x] \(04/03/2022 of completion) The only fields that may be cleared are the password fields 
 
   - [x] \(04/03/2022 of completion) User will be able to login to their account (given they enter the correct credentials)
-  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/login.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/login.php">Link</a>
     - [x] \(04/03/2022 of completion) Form
       - [x] \(04/03/2022 of completion) User can login with email or username
         - [x] \(04/03/2022 of completion) This can be done as a single field or as two separate fields
@@ -45,7 +46,7 @@
       - [x] \(04/03/2022 of completion) This can be home, profile, a dashboard, etc
 
   - [x] \(04/03/2022 of completion) User will be able to logout
-  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/logout.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/logout.php">Link</a>
       - [x] \(04/03/2022 of completion) Logging out will redirect to login page
       - [x] \(04/03/2022 of completion) User should see a message that they’ve successfully logged out
       - [x] \(04/03/2022 of completion) Session should be destroyed (so the back button doesn’t allow them access back in)
@@ -69,36 +70,38 @@
       - [x] \(04/03/2022 of completion) Any technical errors or debug output displayed will result in a loss of points
 
   - [x] \(04/03/2022 of completion) User will be able to see their profile
-  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">Link</a>
       - [x] \(04/03/2022 of completion) Email, username, etc
       
   - [x] User will be able to edit their profile
-  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">Link</a>
       - [x] Changing username/email should properly check to see if it’s available before allowing the change
       - [x] Any other fields should be properly validated
       - [x] Allow password reset (only if the existing correct password is provided)
           - [x] Hint: logic for the password check would be similar to login
 
 - Milestone 2
+<br>
+<a href="https://jc865-prod.herokuapp.com/Project/index.php">Link</a>
   - [x] \(04/06/2022 of completion) Pick a simple game to implement, anything that generates a score that’s more advanced than a simple random number generator (may build off of a sample from the site shared in class for the HTML5 HW)
     - [x] What game will you be doing?
         * **Simple Shoot'em up Game**
     - [x] Briefly describe it.
         * **Originally side scroller game that is developed as a canvas game for html.**
     * **Note**: For this milestone the game doesn’t need to be complete, just have something basic or a placeholder that can generate a score when played.
-  - [x]\(04/13/2022 of completion) The system will save the user’s score at the end of the game only if the user is logged in
+  - [x] \(04/13/2022 of completion) The system will save the user’s score at the end of the game only if the user is logged in
       - [x] There should be a <span style="text-decoration:underline;">Scores</span> table (id, user_id, score, created, modified)
       - [x] Each received score should be a new entry (scores will not be updated)
           - [x] Please let me know if your project expects a running total score
-  - [x]\(04/13/2022 of completion) The user will be able to see their last 10 scores
+  - [x] \(04/13/2022 of completion) The user will be able to see their last 10 scores
       - [x] Shown on their profile page
       - [x] Ordered by most recent
-  - [x]\(04/13/2022 of completion) Create function(s) that output the following scoreboards
+  - [x] \(04/13/2022 of completion) Create function(s) that output the following scoreboards
       - [x] Top 10 Weekly
       - [x] Top 10 Monthly
       - [x] Top 10 Lifetime
       - [x] Scoreboards should show no more than 10 results; if there are no results a proper message should be displayed (i.e., “No [time period] scores to display”)
-  - [x]\(04/15/2022 of completion)Create a Homepage (index.php)
+  - [x] \(04/15/2022 of completion)Create a Homepage (index.php)
       - [x] Include a weekly, monthly, and lifetime scoreboard
           - [x] Scoreboards will show username, score, timestamp of when the score was received
           - [x] You may manually edit some score entries in the database to show proof each scoreboard output works
