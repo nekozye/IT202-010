@@ -32,12 +32,14 @@ function return_active_class_text($dest)
 {
     if(url_matching_current($dest))
     {
-        return "class=\"active\"";
+        return "active";
     }
     else
     {
         return "";
     }
 }
+
+
 
 ?>
