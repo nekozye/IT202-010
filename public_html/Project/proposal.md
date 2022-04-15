@@ -86,22 +86,22 @@
     - [x] Briefly describe it.
         * **Originally side scroller game that is developed as a canvas game for html.**
     * **Note**: For this milestone the game doesn’t need to be complete, just have something basic or a placeholder that can generate a score when played.
-  - [ ] The system will save the user’s score at the end of the game only if the user is logged in
-      - [ ] There should be a <span style="text-decoration:underline;">Scores</span> table (id, user_id, score, created, modified)
-      - [ ] Each received score should be a new entry (scores will not be updated)
-          - [ ] Please let me know if your project expects a running total score
-  - [ ] The user will be able to see their last 10 scores
-      - [ ] Shown on their profile page
-      - [ ] Ordered by most recent
-  - [ ] Create function(s) that output the following scoreboards
-      - [ ] Top 10 Weekly
-      - [ ] Top 10 Monthly
-      - [ ] Top 10 Lifetime
-      - [ ] Scoreboards should show no more than 10 results; if there are no results a proper message should be displayed (i.e., “No [time period] scores to display”)
+  - [x]\(04/13/2022 of completion) The system will save the user’s score at the end of the game only if the user is logged in
+      - [x] There should be a <span style="text-decoration:underline;">Scores</span> table (id, user_id, score, created, modified)
+      - [x] Each received score should be a new entry (scores will not be updated)
+          - [x] Please let me know if your project expects a running total score
+  - [x]\(04/13/2022 of completion) The user will be able to see their last 10 scores
+      - [x] Shown on their profile page
+      - [x] Ordered by most recent
+  - [x]\(04/13/2022 of completion) Create function(s) that output the following scoreboards
+      - [x] Top 10 Weekly
+      - [x] Top 10 Monthly
+      - [x] Top 10 Lifetime
+      - [x] Scoreboards should show no more than 10 results; if there are no results a proper message should be displayed (i.e., “No [time period] scores to display”)
   - [ ] Create a Homepage (index.php)
-      - [ ] Include a weekly, monthly, and lifetime scoreboard
-          - [ ] Scoreboards will show username, score, timestamp of when the score was received
-          - [ ] You may manually edit some score entries in the database to show proof each scoreboard output works
+      - [x] Include a weekly, monthly, and lifetime scoreboard
+          - [x] Scoreboards will show username, score, timestamp of when the score was received
+          - [x] You may manually edit some score entries in the database to show proof each scoreboard output works
       - [ ] Include a link to the game
       - [ ] Include a description of your project/game
       - [ ] Include a proper heading

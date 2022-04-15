@@ -1,14 +1,34 @@
 <?php
-    require(__DIR__."/../../partials/nav.php");
+require(__DIR__ . "/../../partials/nav.php");
 ?>
-<h1>Home</h1>
+<div class="container-fluid">
+    <h1>Home</h1>
+    <?php
 
+    /*if (is_logged_in(true)) {
+    //echo "Welcome home, " . get_username();
+    //comment this out if you don't want to see the session variables
+    error_log("Session data: " . var_export($_SESSION, true));
+}*/
+    ?>
+
+    <?php
+    //this is day which is the default
+    require(__DIR__ . "/../../partials/scores_table.php");
+    ?>
+    <?php
+    $duration = "week";
+    require(__DIR__ . "/../../partials/scores_table.php");
+    ?>
+    <?php
+    $duration = "month";
+    require(__DIR__ . "/../../partials/scores_table.php");
+    ?>
+    <?php
+    $duration = "lifetime";
+    require(__DIR__ . "/../../partials/scores_table.php");
+    ?>
+</div>
 <?php
-//edited to use user_helpers.php
-    if(is_logged_in(true)){
-        error_log("session data: " . var_export($_SESSION, true));
-        echo "welcome, ".$_SESSION["user"]["username"]."!";
-    }
+require(__DIR__ . "/../../partials/footer.php");
 ?>
-
-<?php require_once(__DIR__."/../../partials/flash.php"); ?>
