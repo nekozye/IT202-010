@@ -1,17 +1,26 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
-<form onsubmit="return validate(this)" method="POST">
-    <div>
-        <label for="email">Email</label>
-        <input type="email" id="useremail" name="email" required />
+<div class="container h-100">
+    <div class="fadeUp floating-wrapper mx-auto my-auto row align-items-center h-100">
+        <div class="bg-light rounded form-floating">
+            <form onsubmit="return validate(this)" method="POST">
+                <h1>Login</h1>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="email">Username/Email</label>
+                    <input class="form-control" type="text" id="email" name="email" required />
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="pw">Password</label>
+                    <input class="form-control" type="password" id="pw" name="password" required minlength="8" />
+                </div>
+                <input type="submit" class="mt-3 btn btn-primary" value="Login" />
+            </form>
+        </div>
     </div>
-    <div>
-        <label for="pw">Password</label>
-        <input type="password" id="pw" name="password" required minlength="8" />
-    </div>
-    <input type="submit" value="Login" />
-</form>
+
+</div>
+
 <script>
     function validate(form) {
         //TODO 1: implement JavaScript validation
@@ -23,23 +32,26 @@ require(__DIR__ . "/../../partials/nav.php");
         let isValid = true;
 
         refresh_flash();
-        
-        if((useremail.value === undefined)) { isValid = false; flash("Requires Email","danger");}
-        if((password.value === undefined)) { isValid = false; flash("Requires Password","danger");}
 
-        if(!isValid)
-        {
+        if ((useremail.value === undefined)) {
+            isValid = false;
+            flash("Requires Email", "danger");
+        }
+        if ((password.value === undefined)) {
+            isValid = false;
+            flash("Requires Password", "danger");
+        }
+
+        if (!isValid) {
             return false;
         }
 
-        if(!validate_email(useremail.value))
-        {
+        if (!validate_email(useremail.value) && !validate_username(useremail.value)) {
             isValid = false;
-            flash("Email is not Valid", "danger");
+            flash("Email or Username is not Valid", "danger");
         }
 
-        if(password.value.length < 8)
-        {
+        if (password.value.length < 8) {
             isValid = false;
             flash("Password is too short", "danger");
         }
@@ -50,6 +62,7 @@ require(__DIR__ . "/../../partials/nav.php");
 
     }
 </script>
+
 <?php
 //TODO 2: add PHP Code
 if (isset($_POST["email"]) && isset($_POST["password"])) {
@@ -59,21 +72,31 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     //TODO 3
     $hasError = false;
     if (empty($email)) {
-        flash("Email must not be empty");
+        flash("Email/Username must not be empty");
         $hasError = true;
     }
-    //sanitize
-    //$email = filter_var($email, FILTER_SANITIZE_EMAIL);
-    $email = sanitize_email($email);
-    //validate
-    /*if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        flash("Invalid email address");
-        $hasError = true;
-    }*/
-    if (!is_valid_email($email)) {
-        flash("Invalid email address");
-        $hasError = true;
+
+
+    if (str_contains($email, "@")) {
+        //sanitize
+        //$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        $email = sanitize_email($email);
+        //validate
+        /*if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            flash("Invalid email address");
+            $hasError = true;
+        }*/
+        if (!is_valid_email($email)) {
+            flash("Invalid email address");
+            $hasError = true;
+        }
+    } else {
+        if (!is_valid_username($email)) {
+            flash("Invalid username");
+            $hasError = true;
+        }
     }
+
     if (empty($password)) {
         flash("password must not be empty");
         $hasError = true;
@@ -86,14 +109,14 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         //flash("Welcome, $email");
         //TODO 4
         $db = getDB();
-        $stmt = $db->prepare("SELECT id, email, username, password from Users where email = :email");
+        $stmt = $db->prepare("SELECT id, email, username, password from Users where email = :email or username = :email");
         try {
             $stmt->execute([":email" => $email]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user) {
                 $hash = $user["password"];
-                
+
                 if (password_verify($password, $hash)) {
                     flash("Login Successful!", "success");
                     unset($user["password"]);
@@ -102,7 +125,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                     //saving the user information
                     $_SESSION["user"] = $user;
 
-                    
+
 
                     //setup for user role setup
 
@@ -124,7 +147,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                     flash("Password does not match", "warning");
                 }
             } else {
-                flash("Email not found" , "warning");
+                flash("Email or Username not found", "warning");
             }
         } catch (Exception $e) {
             flash("<pre>" . var_export($e, true) . "</pre>");
