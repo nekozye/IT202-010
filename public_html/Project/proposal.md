@@ -109,7 +109,59 @@
       - [x] Include a description of your project/game
       - [x] Include a proper heading
 - Milestone 3
-  - (duplicate template here for Milestone 1 features)
+  - [ ] Users will have credits associated with their account.
+      - [ ] Alter the User table to include credits with a default of 0.
+          - [ ] This field must not be incremented/decremented directly, you must use the CreditHistory table to calculate it and set it each time the credits change (hint: using SQL sum())
+      - [ ] Credits should show on the user’s profile page
+          - [ ] You may show credits elsewhere _as well_ if you wish
+  - [ ] Create a <span style="text-decoration:underline;">CreditsHistory</span> table (id, user_id, credit_diff, reason, created)
+      - [ ] Any new entry should update the user’s credits value (do not update the User credits column directly)
+          - [ ] SUM the credit_diff for the user_id to get the total
+  - [ ] <span style="text-decoration:underline;">Competitions</span> table should have the following columns (id, name, duration, expires (value = now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean default false), did_calc (boolean default false), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created_by (user_id ref), created, modified)
+  - [ ] User will be able to create a competition
+      - [ ] Competitions will start at 1 credit (reward)
+      - [ ] User sets a name for the competition
+      - [ ] User determines % given for 1st, 2nd, and 3rd place winners
+          - [ ] Combination must be equal to 100% (no more, no less)
+      - [ ] User determines if it’s free to join or the cost to join (min 0 for free)
+      - [ ] User determines the duration of the competition (in days)
+      - [ ] User can determine the minimum score to qualify (min 0)
+      - [ ] User determines minimum participants for payout (min 3)
+      - [ ] Show any user friendly error messages
+      - [ ] Show user friendly confirmation message that competition was created
+      - [ ] The cost to the creator of the competition will be (1 + starting reward value)
+          - [ ] If they can’t afford it, the competition should not be created
+          - [ ] If they can afford it, automatically add them to the competition as a participant but don’t trigger the Reward increase in the following step
+  - [ ] Each new participant causes the Reward value to increase by 50% of the joining fee rounded up (i.e., at least 1)
+      - [ ] This should be an equation based on number of participants, do not just increment the reward value (this is repeated below as well)
+  - [ ] Have a page where the User can see active competitions (not expired)
+      - [ ] For this milestone limit the output to a maximum of 10
+      - [ ] Order the results by soonest to expire
+  - [ ] Will need an association table <span style="text-decoration:underline;">CompetitionParticipants</span> (id, comp_id, user_id, created, modified)
+      - [ ] Comp_id and user_id should be a composite unique key (user can only join a competition once)
+  - [ ] User can join active competitions 
+      - [ ] Creates an entry in CompetitionParticipants
+      - [ ] Recalculate the Competitions.participants value based on the count of participants for this competition from the CompetitionParticipants table.
+      - [ ] Update the Competitions.reward based on the # of participants and the appropriate math from the competition requirements above
+          - [ ] Best to do this based on a simple equation via the initial Competition data and participants
+          - [ ] Do not just increment the reward
+      - [ ] Show proper error message if user is already registered
+      - [ ] Show proper confirmation if user registered successfully
+  - [ ] Create function that calculates competition winners (clearly comment each step in the code)
+      - [ ] Get all expired and not paid_out and not did_calc competitions (limit to 10 at a time)
+      - [ ] For each competition
+          - [ ] Compare the participant count against the minimum required
+          - [ ] Get the top 3 winners
+              - [ ] **Pick 1 (strike out the option you won’t do; do not delete):**
+                  - [ ] **Option 1: **Scores are calculated by the sum of the score from the Scores table where it was earned/created between Competition start and Competition expires timestamps
+                  - [ ] **Option 2: **Where the individual score was earned/created between when the user joined the competition and when the Competition expires
+          - [ ] Calculate the payout (reward * place_percent)
+              - [ ] Round up the value (it’s ok to pay out an extra credit here and there)
+          - [ ] Create entries for the Users in the CreditsHistory table
+              - [ ] Apply the new values (SUM) to their credits column in the Users table after entry is added
+              - [ ] Reason should be recorded as “Won {credits} credits for {place} place in Competition {name}”
+          - [ ] Mark the competition as paid_out = true and did_calc = true
+      - [ ] Mark all invalid competitions as did_calc = true (i.e., where # of participants is less than the minimum)
 - Milestone 4
   - (duplicate template here for Milestone 1 features)
   - 
