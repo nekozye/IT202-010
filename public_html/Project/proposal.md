@@ -19,6 +19,7 @@
 - Milestone 1
   - [x] \(04/03/2022 of completion) \(04/03/2022 of completion) User will be able to register a new account
   -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/register.php">
+  Link</a>
     - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Form Fields
       - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Username, email, password, confirm password
       - [x] \(04/03/2022 of completion)\(04/03/2022 of completion) Email is required and must be validated
@@ -33,7 +34,7 @@
       - [x] \(04/03/2022 of completion) The only fields that may be cleared are the password fields 
 
   - [x] \(04/03/2022 of completion) User will be able to login to their account (given they enter the correct credentials)
-  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/login.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/login.php">Link</a>
     - [x] \(04/03/2022 of completion) Form
       - [x] \(04/03/2022 of completion) User can login with email or username
         - [x] \(04/03/2022 of completion) This can be done as a single field or as two separate fields
@@ -45,7 +46,7 @@
       - [x] \(04/03/2022 of completion) This can be home, profile, a dashboard, etc
 
   - [x] \(04/03/2022 of completion) User will be able to logout
-  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/logout.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/logout.php">Link</a>
       - [x] \(04/03/2022 of completion) Logging out will redirect to login page
       - [x] \(04/03/2022 of completion) User should see a message that they’ve successfully logged out
       - [x] \(04/03/2022 of completion) Session should be destroyed (so the back button doesn’t allow them access back in)
@@ -69,44 +70,98 @@
       - [x] \(04/03/2022 of completion) Any technical errors or debug output displayed will result in a loss of points
 
   - [x] \(04/03/2022 of completion) User will be able to see their profile
-  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">Link</a>
       - [x] \(04/03/2022 of completion) Email, username, etc
       
-  - [X] User will be able to edit their profile
-  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">
-      - [X] Changing username/email should properly check to see if it’s available before allowing the change
-      - [X] Any other fields should be properly validated
-      - [X] Allow password reset (only if the existing correct password is provided)
-          - [X] Hint: logic for the password check would be similar to login
+  - [x] User will be able to edit their profile
+  -  Link to related .md file:<a href="https://jc865-prod.herokuapp.com/Project/profile.php">Link</a>
+      - [x] Changing username/email should properly check to see if it’s available before allowing the change
+      - [x] Any other fields should be properly validated
+      - [x] Allow password reset (only if the existing correct password is provided)
+          - [x] Hint: logic for the password check would be similar to login
 
 - Milestone 2
+<br>
+<a href="https://jc865-prod.herokuapp.com/Project/index.php">Link</a>
   - [x] \(04/06/2022 of completion) Pick a simple game to implement, anything that generates a score that’s more advanced than a simple random number generator (may build off of a sample from the site shared in class for the HTML5 HW)
     - [x] What game will you be doing?
         * **Simple Shoot'em up Game**
     - [x] Briefly describe it.
         * **Originally side scroller game that is developed as a canvas game for html.**
     * **Note**: For this milestone the game doesn’t need to be complete, just have something basic or a placeholder that can generate a score when played.
-  - [ ] The system will save the user’s score at the end of the game only if the user is logged in
-      - [ ] There should be a <span style="text-decoration:underline;">Scores</span> table (id, user_id, score, created, modified)
-      - [ ] Each received score should be a new entry (scores will not be updated)
-          - [ ] Please let me know if your project expects a running total score
-  - [ ] The user will be able to see their last 10 scores
-      - [ ] Shown on their profile page
-      - [ ] Ordered by most recent
-  - [ ] Create function(s) that output the following scoreboards
-      - [ ] Top 10 Weekly
-      - [ ] Top 10 Monthly
-      - [ ] Top 10 Lifetime
-      - [ ] Scoreboards should show no more than 10 results; if there are no results a proper message should be displayed (i.e., “No [time period] scores to display”)
-  - [ ] Create a Homepage (index.php)
-      - [ ] Include a weekly, monthly, and lifetime scoreboard
-          - [ ] Scoreboards will show username, score, timestamp of when the score was received
-          - [ ] You may manually edit some score entries in the database to show proof each scoreboard output works
-      - [ ] Include a link to the game
-      - [ ] Include a description of your project/game
-      - [ ] Include a proper heading
+  - [x] \(04/13/2022 of completion) The system will save the user’s score at the end of the game only if the user is logged in
+      - [x] There should be a <span style="text-decoration:underline;">Scores</span> table (id, user_id, score, created, modified)
+      - [x] Each received score should be a new entry (scores will not be updated)
+          - [x] Please let me know if your project expects a running total score
+  - [x] \(04/13/2022 of completion) The user will be able to see their last 10 scores
+      - [x] Shown on their profile page
+      - [x] Ordered by most recent
+  - [x] \(04/13/2022 of completion) Create function(s) that output the following scoreboards
+      - [x] Top 10 Weekly
+      - [x] Top 10 Monthly
+      - [x] Top 10 Lifetime
+      - [x] Scoreboards should show no more than 10 results; if there are no results a proper message should be displayed (i.e., “No [time period] scores to display”)
+  - [x] \(04/15/2022 of completion)Create a Homepage (index.php)
+      - [x] Include a weekly, monthly, and lifetime scoreboard
+          - [x] Scoreboards will show username, score, timestamp of when the score was received
+          - [x] You may manually edit some score entries in the database to show proof each scoreboard output works
+      - [x] Include a link to the game
+      - [x] Include a description of your project/game
+      - [x] Include a proper heading
 - Milestone 3
-  - (duplicate template here for Milestone 1 features)
+  - [ ] Users will have credits associated with their account.
+      - [ ] Alter the User table to include credits with a default of 0.
+          - [ ] This field must not be incremented/decremented directly, you must use the CreditHistory table to calculate it and set it each time the credits change (hint: using SQL sum())
+      - [ ] Credits should show on the user’s profile page
+          - [ ] You may show credits elsewhere _as well_ if you wish
+  - [ ] Create a <span style="text-decoration:underline;">CreditsHistory</span> table (id, user_id, credit_diff, reason, created)
+      - [ ] Any new entry should update the user’s credits value (do not update the User credits column directly)
+          - [ ] SUM the credit_diff for the user_id to get the total
+  - [ ] <span style="text-decoration:underline;">Competitions</span> table should have the following columns (id, name, duration, expires (value = now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean default false), did_calc (boolean default false), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created_by (user_id ref), created, modified)
+  - [ ] User will be able to create a competition
+      - [ ] Competitions will start at 1 credit (reward)
+      - [ ] User sets a name for the competition
+      - [ ] User determines % given for 1st, 2nd, and 3rd place winners
+          - [ ] Combination must be equal to 100% (no more, no less)
+      - [ ] User determines if it’s free to join or the cost to join (min 0 for free)
+      - [ ] User determines the duration of the competition (in days)
+      - [ ] User can determine the minimum score to qualify (min 0)
+      - [ ] User determines minimum participants for payout (min 3)
+      - [ ] Show any user friendly error messages
+      - [ ] Show user friendly confirmation message that competition was created
+      - [ ] The cost to the creator of the competition will be (1 + starting reward value)
+          - [ ] If they can’t afford it, the competition should not be created
+          - [ ] If they can afford it, automatically add them to the competition as a participant but don’t trigger the Reward increase in the following step
+  - [ ] Each new participant causes the Reward value to increase by 50% of the joining fee rounded up (i.e., at least 1)
+      - [ ] This should be an equation based on number of participants, do not just increment the reward value (this is repeated below as well)
+  - [ ] Have a page where the User can see active competitions (not expired)
+      - [ ] For this milestone limit the output to a maximum of 10
+      - [ ] Order the results by soonest to expire
+  - [ ] Will need an association table <span style="text-decoration:underline;">CompetitionParticipants</span> (id, comp_id, user_id, created, modified)
+      - [ ] Comp_id and user_id should be a composite unique key (user can only join a competition once)
+  - [ ] User can join active competitions 
+      - [ ] Creates an entry in CompetitionParticipants
+      - [ ] Recalculate the Competitions.participants value based on the count of participants for this competition from the CompetitionParticipants table.
+      - [ ] Update the Competitions.reward based on the # of participants and the appropriate math from the competition requirements above
+          - [ ] Best to do this based on a simple equation via the initial Competition data and participants
+          - [ ] Do not just increment the reward
+      - [ ] Show proper error message if user is already registered
+      - [ ] Show proper confirmation if user registered successfully
+  - [ ] Create function that calculates competition winners (clearly comment each step in the code)
+      - [ ] Get all expired and not paid_out and not did_calc competitions (limit to 10 at a time)
+      - [ ] For each competition
+          - [ ] Compare the participant count against the minimum required
+          - [ ] Get the top 3 winners
+              - [ ] **Pick 1 (strike out the option you won’t do; do not delete):**
+                  - [ ] **Option 1: **Scores are calculated by the sum of the score from the Scores table where it was earned/created between Competition start and Competition expires timestamps
+                  - [ ] **Option 2: **Where the individual score was earned/created between when the user joined the competition and when the Competition expires
+          - [ ] Calculate the payout (reward * place_percent)
+              - [ ] Round up the value (it’s ok to pay out an extra credit here and there)
+          - [ ] Create entries for the Users in the CreditsHistory table
+              - [ ] Apply the new values (SUM) to their credits column in the Users table after entry is added
+              - [ ] Reason should be recorded as “Won {credits} credits for {place} place in Competition {name}”
+          - [ ] Mark the competition as paid_out = true and did_calc = true
+      - [ ] Mark all invalid competitions as did_calc = true (i.e., where # of participants is less than the minimum)
 - Milestone 4
   - (duplicate template here for Milestone 1 features)
   - 
