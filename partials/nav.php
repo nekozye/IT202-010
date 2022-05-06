@@ -45,6 +45,7 @@ session_start();
 
                 <?php if (is_logged_in()) : ?>
                     <li class="nav-item"><a class="nav-link <?php echo return_active_class_text('profile.php'); ?>" href="<?php echo get_url('profile.php'); ?>">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link <?php echo return_active_class_text('shop.php'); ?>" href="<?php echo get_url('shop.php'); ?>">Shop</a></li>
                 <?php endif; ?>
                 <?php if (!is_logged_in()) : ?>
                     <li class="nav-item"><a class="nav-link <?php echo return_active_class_text('login.php'); ?>" href="<?php echo get_url('login.php'); ?>">Login</a></li>
@@ -59,6 +60,10 @@ session_start();
                             <li><a class="dropdown-item <?php echo return_active_class_text('admin/create_role.php'); ?>" href="<?php echo get_url('admin/create_role.php'); ?>">Create</a></li>
                             <li><a class="dropdown-item <?php echo return_active_class_text('admin/list_roles.php'); ?>" href="<?php echo get_url('admin/list_roles.php'); ?>">List</a></li>
                             <li><a class="dropdown-item <?php echo return_active_class_text('admin/assign_roles.php'); ?>" href="<?php echo get_url('admin/assign_roles.php'); ?>">Assign</a></li>
+
+                            <li><a class="dropdown-item <?php echo return_active_class_text('admin/add_item.php'); ?>" href="<?php echo get_url('admin/add_item.php'); ?>">Shop - Item Add</a></li>
+                            <li><a class="dropdown-item <?php echo return_active_class_text('admin/edit_item.php'); ?>" href="<?php echo get_url('admin/edit_item.php'); ?>">Shop - Edit Item</a></li>
+                            <li><a class="dropdown-item <?php echo return_active_class_text('admin/list_items.php'); ?>" href="<?php echo get_url('admin/list_items.php'); ?>">Shop - List Item</a></li>
                         </ul>
                     </li>
                 <?php endif; ?>

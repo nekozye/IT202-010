@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
+refresh_account_balance();
 ?>
 <?php
 if (isset($_POST["save"])) {
@@ -93,6 +94,12 @@ $username = get_username();
             <div class="bg-light rounded inrow-class-multi form-floating">
                 <div class="text-best-score">
                     Best Score: <?php echo get_best_score(get_user_id()); ?>
+                </div>
+            </div>
+
+            <div class="bg-light rounded inrow-class-multi form-floating">
+                <div class="text-best-score">
+                    Current Churu: <?php echo get_account_balance(get_user_id()); ?> Churus
                 </div>
             </div>
 
