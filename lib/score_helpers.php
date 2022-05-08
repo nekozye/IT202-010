@@ -12,7 +12,7 @@ function get_top_10($duration = "day")
         $d = $duration;
     }
     $db = getDB();
-    $query = "SELECT username, Shoot_UP_Scores.score, Shoot_UP_Scores.created from Shoot_UP_Scores join Users on Shoot_UP_Scores.user_id = Users.id";
+    $query = "SELECT user_id, username, Shoot_UP_Scores.score, Shoot_UP_Scores.created from Shoot_UP_Scores join Users on Shoot_UP_Scores.user_id = Users.id";
     if ($d === "day") {
 
         $query .= " WHERE Shoot_UP_Scores.created >= addtime(CURDATE(), '00:00:00') AND Shoot_UP_Scores.created <= addtime(CURDATE(), '23:59:59')";

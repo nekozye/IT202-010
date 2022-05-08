@@ -10,6 +10,9 @@ $BASE_PATH = "/Project";
 //Global variable that is required on multiple website files
 require(__DIR__ . "/global_setups.php");
 
+
+
+
 //TODO 4: Flash Message Helpers, moved to be used for all required php setups
 require(__DIR__ . "/flash_messages.php");
 
@@ -26,6 +29,8 @@ require(__DIR__ . "/sql_helpers.php");
 
 //TODO 3: User helpers
 require(__DIR__ . "/user_helpers.php");
+
+
 
 
 
@@ -49,7 +54,7 @@ require(__DIR__ . "/competition_helpers.php");
 require(__DIR__ . "/shop_helpers.php");
 
 
-
+require(__DIR__ . "/php_helpers.php");
 
 //url getting functionality helpers
 require(__DIR__ . "/get_url.php");
