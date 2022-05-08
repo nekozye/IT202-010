@@ -10,6 +10,9 @@ $BASE_PATH = "/Project";
 //Global variable that is required on multiple website files
 require(__DIR__ . "/global_setups.php");
 
+//since php helper is used in rest of the helpers, this gets placed in front of the helper chain
+require(__DIR__ . "/php_helpers.php");
+
 
 
 
@@ -54,7 +57,7 @@ require(__DIR__ . "/competition_helpers.php");
 require(__DIR__ . "/shop_helpers.php");
 
 
-require(__DIR__ . "/php_helpers.php");
+
 
 //url getting functionality helpers
 require(__DIR__ . "/get_url.php");

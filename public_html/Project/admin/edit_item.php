@@ -5,7 +5,7 @@ $TABLE_NAME = $ITEM_TABLE_NAME;
 
 if (!has_role("Admin")) {
     flash("You don't have permission to view this page", "warning");
-    die(header("Location: $BASE_PATH/home.php"));
+    redirect("$BASE_PATH/home.php");
 }
 //update the item
 if (isset($_POST["submit"])) {
@@ -45,22 +45,27 @@ function map_column($col)
     return "text";
 }
 ?>
-<div class="container-fluid">
-    <h1>Edit Item</h1>
-    <form method="POST">
-        <?php foreach ($result as $column => $value) : ?>
-            <?php /* Lazily ignoring fields via hardcoded array*/ ?>
-            <?php if (!in_array($column, $ignore)) : ?>
-                <div class="mb-4">
-                    <label class="form-label" for="<?php se($column); ?>"><?php se($column); ?></label>
-                    <input class="form-control" id="<?php se($column); ?>" type="<?php echo map_column($column); ?>" value="<?php se($value); ?>" name="<?php se($column); ?>" />
-                </div>
-            <?php endif; ?>
-        <?php endforeach; ?>
-        <input class="btn btn-primary" type="submit" value="Update" name="submit" />
-    </form>
+<div class="h-100">
+    <div class="large-floating-wrapper mx-auto align-items-center">
+        <div class="bg-light rounded form-floating">
+            <div class="container-fluid">
+                <h1>Edit Item</h1>
+                <form method="POST">
+                    <?php foreach ($result as $column => $value) : ?>
+                        <?php /* Lazily ignoring fields via hardcoded array*/ ?>
+                        <?php if (!in_array($column, $ignore)) : ?>
+                            <div class="mb-4">
+                                <label class="form-label" for="<?php se($column); ?>"><?php se($column); ?></label>
+                                <input class="form-control" id="<?php se($column); ?>" type="<?php echo map_column($column); ?>" value="<?php se($value); ?>" name="<?php se($column); ?>" />
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                    <input class="btn btn-primary" type="submit" value="Update" name="submit" />
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-
 <?php
 //note we need to go up 1 more directory
 require_once(__DIR__ . "/../../../partials/footer.php");

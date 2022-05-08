@@ -117,36 +117,36 @@
   - [x] Create a <span style="text-decoration:underline;">CreditsHistory</span> table (id, user_id, credit_diff, reason, created)
       - [x] Any new entry should update the user’s credits value (do not update the User credits column directly)
           - [x] SUM the credit_diff for the user_id to get the total
-  - [ ] <span style="text-decoration:underline;">Competitions</span> table should have the following columns (id, name, duration, expires (value = now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean default false), did_calc (boolean default false), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created_by (user_id ref), created, modified)
-  - [ ] User will be able to create a competition
-      - [ ] Competitions will start at 1 credit (reward)
-      - [ ] User sets a name for the competition
-      - [ ] User determines % given for 1st, 2nd, and 3rd place winners
-          - [ ] Combination must be equal to 100% (no more, no less)
-      - [ ] User determines if it’s free to join or the cost to join (min 0 for free)
-      - [ ] User determines the duration of the competition (in days)
-      - [ ] User can determine the minimum score to qualify (min 0)
-      - [ ] User determines minimum participants for payout (min 3)
-      - [ ] Show any user friendly error messages
-      - [ ] Show user friendly confirmation message that competition was created
-      - [ ] The cost to the creator of the competition will be (1 + starting reward value)
-          - [ ] If they can’t afford it, the competition should not be created
-          - [ ] If they can afford it, automatically add them to the competition as a participant but don’t trigger the Reward increase in the following step
-  - [ ] Each new participant causes the Reward value to increase by 50% of the joining fee rounded up (i.e., at least 1)
-      - [ ] This should be an equation based on number of participants, do not just increment the reward value (this is repeated below as well)
-  - [ ] Have a page where the User can see active competitions (not expired)
-      - [ ] For this milestone limit the output to a maximum of 10
-      - [ ] Order the results by soonest to expire
-  - [ ] Will need an association table <span style="text-decoration:underline;">CompetitionParticipants</span> (id, comp_id, user_id, created, modified)
-      - [ ] Comp_id and user_id should be a composite unique key (user can only join a competition once)
-  - [ ] User can join active competitions 
-      - [ ] Creates an entry in CompetitionParticipants
-      - [ ] Recalculate the Competitions.participants value based on the count of participants for this competition from the CompetitionParticipants table.
-      - [ ] Update the Competitions.reward based on the # of participants and the appropriate math from the competition requirements above
-          - [ ] Best to do this based on a simple equation via the initial Competition data and participants
-          - [ ] Do not just increment the reward
-      - [ ] Show proper error message if user is already registered
-      - [ ] Show proper confirmation if user registered successfully
+  - [x] <span style="text-decoration:underline;">Competitions</span> table should have the following columns (id, name, duration, expires (value = now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean default false), did_calc (boolean default false), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created_by (user_id ref), created, modified)
+  - [x] User will be able to create a competition
+      - [x] Competitions will start at 1 credit (reward)
+      - [x] User sets a name for the competition
+      - [x] User determines % given for 1st, 2nd, and 3rd place winners
+          - [x] Combination must be equal to 100% (no more, no less)
+      - [x] User determines if it’s free to join or the cost to join (min 0 for free)
+      - [x] User determines the duration of the competition (in days)
+      - [x] User can determine the minimum score to qualify (min 0)
+      - [x] User determines minimum participants for payout (min 3)
+      - [x] Show any user friendly error messages
+      - [x] Show user friendly confirmation message that competition was created
+      - [x] The cost to the creator of the competition will be (1 + starting reward value)
+          - [x] If they can’t afford it, the competition should not be created
+          - [x] If they can afford it, automatically add them to the competition as a participant but don’t trigger the Reward increase in the following step
+  - [x] Each new participant causes the Reward value to increase by 50% of the joining fee rounded up (i.e., at least 1)
+      - [x] This should be an equation based on number of participants, do not just increment the reward value (this is repeated below as well)
+  - [x] Have a page where the User can see active competitions (not expired)
+      - [x] For this milestone limit the output to a maximum of 10
+      - [x] Order the results by soonest to expire
+  - [x] Will need an association table <span style="text-decoration:underline;">CompetitionParticipants</span> (id, comp_id, user_id, created, modified)
+      - [x] Comp_id and user_id should be a composite unique key (user can only join a competition once)
+  - [x] User can join active competitions 
+      - [x] Creates an entry in CompetitionParticipants
+      - [x] Recalculate the Competitions.participants value based on the count of participants for this competition from the CompetitionParticipants table.
+      - [x] Update the Competitions.reward based on the # of participants and the appropriate math from the competition requirements above
+          - [x] Best to do this based on a simple equation via the initial Competition data and participants
+          - [x] Do not just increment the reward
+      - [x] Show proper error message if user is already registered
+      - [x] Show proper confirmation if user registered successfully
   - [ ] Create function that calculates competition winners (clearly comment each step in the code)
       - [ ] Get all expired and not paid_out and not did_calc competitions (limit to 10 at a time)
       - [ ] For each competition

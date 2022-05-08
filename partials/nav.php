@@ -46,6 +46,15 @@ session_start();
                 <?php if (is_logged_in()) : ?>
                     <li class="nav-item"><a class="nav-link <?php echo return_active_class_text('profile.php'); ?>" href="<?php echo get_url('profile.php'); ?>">Profile</a></li>
                     <li class="nav-item"><a class="nav-link <?php echo return_active_class_text('shop.php'); ?>" href="<?php echo get_url('shop.php'); ?>">Shop</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="compDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Competition
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="compDropdown">
+                            <li><a class="dropdown-item <?php echo return_active_class_text('competition_creation.php'); ?>" href="<?php echo get_url('competition_creation.php'); ?>">Create Competition</a></li>
+                            <li><a class="dropdown-item <?php echo return_active_class_text('competition_list.php'); ?>" href="<?php echo get_url('competition_list.php'); ?>">View Competitions</a></li>
+                        </ul>
+                    </li>
                 <?php endif; ?>
                 <?php if (!is_logged_in()) : ?>
                     <li class="nav-item"><a class="nav-link <?php echo return_active_class_text('login.php'); ?>" href="<?php echo get_url('login.php'); ?>">Login</a></li>
@@ -64,6 +73,7 @@ session_start();
                             <li><a class="dropdown-item <?php echo return_active_class_text('admin/add_item.php'); ?>" href="<?php echo get_url('admin/add_item.php'); ?>">Shop - Item Add</a></li>
                             <li><a class="dropdown-item <?php echo return_active_class_text('admin/edit_item.php'); ?>" href="<?php echo get_url('admin/edit_item.php'); ?>">Shop - Edit Item</a></li>
                             <li><a class="dropdown-item <?php echo return_active_class_text('admin/list_items.php'); ?>" href="<?php echo get_url('admin/list_items.php'); ?>">Shop - List Item</a></li>
+
                         </ul>
                     </li>
                 <?php endif; ?>
