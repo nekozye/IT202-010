@@ -31,8 +31,6 @@ require(__DIR__ . "/../../partials/nav.php");
 
         let isValid = true;
 
-        refresh_flash();
-
         if ((useremail.value === undefined)) {
             isValid = false;
             flash("Requires Email", "danger");

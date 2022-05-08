@@ -110,13 +110,13 @@
       - [x] Include a proper heading
 - Milestone 3
   - [ ] Users will have credits associated with their account.
-      - [ ] Alter the User table to include credits with a default of 0.
-          - [ ] This field must not be incremented/decremented directly, you must use the CreditHistory table to calculate it and set it each time the credits change (hint: using SQL sum())
-      - [ ] Credits should show on the user’s profile page
-          - [ ] You may show credits elsewhere _as well_ if you wish
-  - [ ] Create a <span style="text-decoration:underline;">CreditsHistory</span> table (id, user_id, credit_diff, reason, created)
-      - [ ] Any new entry should update the user’s credits value (do not update the User credits column directly)
-          - [ ] SUM the credit_diff for the user_id to get the total
+      - [x] Alter the User table to include credits with a default of 0. (modified, using separate credit account table.)
+          - [x] This field must not be incremented/decremented directly, you must use the CreditHistory table to calculate it and set it each time the credits change (hint: using SQL sum())
+      - [x] Credits should show on the user’s profile page
+          - [x] You may show credits elsewhere _as well_ if you wish
+  - [x] Create a <span style="text-decoration:underline;">CreditsHistory</span> table (id, user_id, credit_diff, reason, created)
+      - [x] Any new entry should update the user’s credits value (do not update the User credits column directly)
+          - [x] SUM the credit_diff for the user_id to get the total
   - [ ] <span style="text-decoration:underline;">Competitions</span> table should have the following columns (id, name, duration, expires (value = now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean default false), did_calc (boolean default false), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created_by (user_id ref), created, modified)
   - [ ] User will be able to create a competition
       - [ ] Competitions will start at 1 credit (reward)
