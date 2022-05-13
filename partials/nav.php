@@ -74,6 +74,8 @@ session_start();
                             <li><a class="dropdown-item <?php echo return_active_class_text('admin/edit_item.php'); ?>" href="<?php echo get_url('admin/edit_item.php'); ?>">Shop - Edit Item</a></li>
                             <li><a class="dropdown-item <?php echo return_active_class_text('admin/list_items.php'); ?>" href="<?php echo get_url('admin/list_items.php'); ?>">Shop - List Item</a></li>
 
+                            <li><a class="dropdown-item <?php echo return_active_class_text('admin/admin_calc.php'); ?>" href="<?php echo get_url('admin/admin_calc.php'); ?>">Competition Confirm</a></li>
+
                         </ul>
                     </li>
                 <?php endif; ?>

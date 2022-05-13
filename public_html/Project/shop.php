@@ -93,11 +93,7 @@ try {
         <div class="container-fluid">
             <h1>Shop</h1>
 
-            <div class="bg-light rounded inrow-class-multi form-floating">
-                <div class="text-best-score">
-                    Current Churu: <?php echo get_account_balance(get_user_id()); ?> Churus
-                </div>
-            </div>
+            <?php require(__DIR__."/../../partials/get_churu.php"); ?>
 
             <?php if ($results) : ?>
                 <div class="row row-cols-1 row-cols-md-5 g-4">

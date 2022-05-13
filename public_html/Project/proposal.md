@@ -109,7 +109,7 @@
       - [x] Include a description of your project/game
       - [x] Include a proper heading
 - Milestone 3
-  - [ ] Users will have credits associated with their account.
+  - [x] Users will have credits associated with their account.
       - [x] Alter the User table to include credits with a default of 0. (modified, using separate credit account table.)
           - [x] This field must not be incremented/decremented directly, you must use the CreditHistory table to calculate it and set it each time the credits change (hint: using SQL sum())
       - [x] Credits should show on the user’s profile page
@@ -147,24 +147,47 @@
           - [x] Do not just increment the reward
       - [x] Show proper error message if user is already registered
       - [x] Show proper confirmation if user registered successfully
-  - [ ] Create function that calculates competition winners (clearly comment each step in the code)
-      - [ ] Get all expired and not paid_out and not did_calc competitions (limit to 10 at a time)
-      - [ ] For each competition
-          - [ ] Compare the participant count against the minimum required
-          - [ ] Get the top 3 winners
-              - [ ] **Pick 1 (strike out the option you won’t do; do not delete):**
-                  - [ ] **Option 1: **Scores are calculated by the sum of the score from the Scores table where it was earned/created between Competition start and Competition expires timestamps
-                  - [ ] **Option 2: **Where the individual score was earned/created between when the user joined the competition and when the Competition expires
-          - [ ] Calculate the payout (reward * place_percent)
-              - [ ] Round up the value (it’s ok to pay out an extra credit here and there)
-          - [ ] Create entries for the Users in the CreditsHistory table
-              - [ ] Apply the new values (SUM) to their credits column in the Users table after entry is added
-              - [ ] Reason should be recorded as “Won {credits} credits for {place} place in Competition {name}”
-          - [ ] Mark the competition as paid_out = true and did_calc = true
-      - [ ] Mark all invalid competitions as did_calc = true (i.e., where # of participants is less than the minimum)
+  - [x] Create function that calculates competition winners (clearly comment each step in the code)
+      - [x] Get all expired and not paid_out and not did_calc competitions (limit to 10 at a time)
+      - [x] For each competition
+          - [x] Compare the participant count against the minimum required
+          - [x] Get the top 3 winners
+              - [x] **Pick 1 (strike out the option you won’t do; do not delete):**
+                  - [ ] ~~**Option 1: **Scores are calculated by the sum of the score from the Scores table where it was earned/created between Competition start and Competition expires timestamps~~
+                  - [x] **Option 2: **Where the individual score was earned/created between when the user joined the competition and when the Competition expires 
+          - [x] Calculate the payout (reward * place_percent)
+              - [x] Round up the value (it’s ok to pay out an extra credit here and there)
+          - [x] Create entries for the Users in the CreditsHistory table
+              - [x] Apply the new values (SUM) to their credits column in the Users table after entry is added
+              - [x] Reason should be recorded as “Won {credits} credits for {place} place in Competition {name}”
+          - [x] Mark the competition as paid_out = true and did_calc = true
+      - [x] Mark all invalid competitions as did_calc = true (i.e., where # of participants is less than the minimum)
 - Milestone 4
-  - (duplicate template here for Milestone 1 features)
-  - 
+    - [x] User can set their profile to be public or private (will need another column in Users table)
+        - [x] If profile is public, hide email address from **other** users (email address should not be publicly visible to others)
+    - [x] User will be able to see their competition history
+        - [x] Limit to 10 results
+        - [x] Paginate anything after 10
+        - [x] If no results, show the appropriate message
+        - [x] Show the competition name, participant count, reward, the expiry date if active otherwise “expired”, whether or not they are the creator
+    - [x] User with the role of “admin” can edit a competition where paid_out = false
+        - [x] They can adjust any of the regular form values
+        - [ ] If the competition was expired they can update the duration to include extra time
+    - [x] Add pagination to the Active Competitions view
+        - [x] Show 10 competitions per page
+        - [x] Paginate anything after 10
+        - [x] If no results, show the appropriate message
+    - [x] Anywhere a username is displayed should link to that user’s profile
+        - [x] This includes all scoreboards (i.e., Homepage, etc)
+        - [x] If the profile is private you can have the page just display “this profile is private” upon access
+    - [x] Viewing an active or expired competition should show the top 10 scoreboard related to that competition
+        - [x] **Note**: This scoreboard is only the scores related to the competition and not the same type of scoreboard as the Homepage
+    - [ ] Game should be fully implemented/completed by this point
+        - [ ] Game should tell the player if they’re not logged in that their score will not be recorded.
+    - [x] User’s score history will include pagination
+        - [x] Show latest 10
+        - [x] Paginate after 10
+        - [x] Show appropriate message for no results
 ### Intructions
 #### Don't delete this
 1. Pick one project type
