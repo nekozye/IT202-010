@@ -13,7 +13,21 @@ function refresh_account_balance()
             error_log(var_export($e->errorInfo, true));
             flash("Error refreshing gem balance", "danger");
         }
+
+
+        $query = "UPDATE Users set balance = (SELECT balance from Accounts WHERE id = :src) where id = (SELECT user_id from Accounts WHERE id = :src)";
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":src" => get_user_account_id()]);
+            error_log("checkout, user updated");
+            get_or_create_account(); //refresh session data
+        } catch (PDOException $e) {
+            error_log(var_export($e->errorInfo, true));
+            flash("Error refreshing gem balance - user side", "danger");
+        }
+
     }
+    
 }
 
 function get_or_create_account()
@@ -74,6 +88,10 @@ function get_or_create_account()
 function get_account_balance()
 {
     if (is_logged_in() && isset($_SESSION["user"]["account"])) {
+        
+        refresh_account_balance();
+
+
         return (int)se($_SESSION["user"]["account"], "balance", 0, false);
     }
     return 0;
