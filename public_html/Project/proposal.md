@@ -167,11 +167,11 @@
 - Milestone 4
     - [x] User can set their profile to be public or private (will need another column in Users table)
         - [x] If profile is public, hide email address from **other** users (email address should not be publicly visible to others)
-    - [x] User will be able to see their competition history
-        - [x] Limit to 10 results
-        - [x] Paginate anything after 10
-        - [x] If no results, show the appropriate message
-        - [x] Show the competition name, participant count, reward, the expiry date if active otherwise “expired”, whether or not they are the creator
+    - [ ] User will be able to see their competition history
+        - [ ] Limit to 10 results
+        - [ ] Paginate anything after 10
+        - [ ] If no results, show the appropriate message
+        - [ ] Show the competition name, participant count, reward, the expiry date if active otherwise “expired”, whether or not they are the creator
     - [x] User with the role of “admin” can edit a competition where paid_out = false
         - [x] They can adjust any of the regular form values
         - [x] If the competition was expired they can update the duration to include extra time
@@ -182,14 +182,14 @@
     - [x] Anywhere a username is displayed should link to that user’s profile
         - [x] This includes all scoreboards (i.e., Homepage, etc)
         - [x] If the profile is private you can have the page just display “this profile is private” upon access
-    - [x] Viewing an active or expired competition should show the top 10 scoreboard related to that competition
-        - [x] **Note**: This scoreboard is only the scores related to the competition and not the same type of scoreboard as the Homepage
+    - [ ] Viewing an active or expired competition should show the top 10 scoreboard related to that competition
+        - [ ] **Note**: This scoreboard is only the scores related to the competition and not the same type of scoreboard as the Homepage
     - [ ] Game should be fully implemented/completed by this point
         - [ ] Game should tell the player if they’re not logged in that their score will not be recorded.
-    - [x] User’s score history will include pagination
-        - [x] Show latest 10
-        - [x] Paginate after 10
-        - [x] Show appropriate message for no results
+    - [ ] User’s score history will include pagination
+        - [ ] Show latest 10
+        - [ ] Paginate after 10
+        - [ ] Show appropriate message for no results
 ### Intructions
 #### Don't delete this
 1. Pick one project type
