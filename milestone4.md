@@ -1,6 +1,6 @@
 <table><tr><td> <em>Assignment: </em> IT202 Milestone 4 Arcade Project</td></tr>
 <tr><td> <em>Student: </em> Jong Hyun Choi(jc865)</td></tr>
-<tr><td> <em>Generated: </em> 5/13/2022 12:58:29 AM</td></tr>
+<tr><td> <em>Generated: </em> 5/13/2022 1:01:12 AM</td></tr>
 <tr><td> <em>Grading Link: </em> <a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IT202-010-S22/it202-milestone-4-arcade-project/grade/jc865" target="_blank">Grading</a></td></tr></table>
 <table><tr><td> <em>Instructions: </em> <ol>
 <li>Checkout Milestone4 branch </li>
@@ -95,10 +95,11 @@ All website links must be from prod (you can assume/infer this by getting your d
 <tr><td> <em>Sub-Task 3: </em> Add a link to the related page</td></tr>
 <tr><td> <a rel="noreferrer noopener" target="_blank" href="http://jc865-prod.herokuapp.com/Project/competition_list.php?page=1">http://jc865-prod.herokuapp.com/Project/competition_list.php?page=1</a> </td></tr>
 </table></td></tr>
-<table><tr><td> <em>Deliverable 5: </em> Anywhere username is displayed should link to that user's profile </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://via.placeholder.com/400x120/f2c037/000000?text=Partial"></td></tr>
+<table><tr><td> <em>Deliverable 5: </em> Anywhere username is displayed should link to that user's profile </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=Complete"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Add screenshot of the score boards with the username links</td></tr>
 <tr><td><table><tr><td><img width="768px" src="https://github.com/nekozye/IT202-010/blob/Milestone4/pictures/Project/FinalMilestone/Milestone4/1.png?raw=true"/></td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td> <em>Caption:</em> <p>username scoreboard<br></p>
+</td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 2: </em> Add screenshot showing a public profile of another users</td></tr>
 <tr><td><table><tr><td><img width="768px" src="https://github.com/nekozye/IT202-010/blob/Milestone4/pictures/Project/FinalMilestone/Milestone4/2.png?raw=true"/></td></tr>
