@@ -13,7 +13,7 @@ function is_logged_in($redirect = false, $destination = "login.php") {
     $isLoggedIn = isset($_SESSION["user"]);
     if ($redirect && !$isLoggedIn) {
         flash("You must be logged in to view this page", "danger");
-        die(header("Location: $destination"));
+        redirect("$destination");
     }
     return $isLoggedIn;
 }
@@ -49,3 +49,10 @@ function get_user_id() {
     }
     return false;
 }
+function get_user_created_status() {
+    if (is_logged_in()) { //we need to check for login first because "user" key may not exist
+        return se($_SESSION["user"], "created", "", false);
+    }
+    return false;
+}
+

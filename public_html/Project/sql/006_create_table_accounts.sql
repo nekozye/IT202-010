@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS RM_Accounts(
+CREATE TABLE IF NOT EXISTS Accounts(
     id int AUTO_INCREMENT PRIMARY KEY,
     account varchar(12) unique DEFAULT (LPAD(user_id, 12, "0")),
     user_id int,

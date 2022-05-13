@@ -12,7 +12,7 @@ function get_top_10($duration = "day")
         $d = $duration;
     }
     $db = getDB();
-    $query = "SELECT username, Shoot_UP_Scores.score, Shoot_UP_Scores.created from Shoot_UP_Scores join Users on Shoot_UP_Scores.user_id = Users.id";
+    $query = "SELECT user_id, username, Shoot_UP_Scores.score, Shoot_UP_Scores.created from Shoot_UP_Scores join Users on Shoot_UP_Scores.user_id = Users.id";
     if ($d === "day") {
 
         $query .= " WHERE Shoot_UP_Scores.created >= addtime(CURDATE(), '00:00:00') AND Shoot_UP_Scores.created <= addtime(CURDATE(), '23:59:59')";
@@ -71,7 +71,7 @@ function get_latest_scores($user_id, $limit = 10)
     if ($limit < 1 || $limit > 50) {
         $limit = 10;
     }
-    $query = "SELECT score, created from Shoot_UP_Scores where user_id = :id ORDER BY created desc LIMIT :limit";
+    $query = "SELECT score, created from Shoot_UP_Scores where user_id = :id ORDER BY created desc LIMIT :limit ";
     $db = getDB();
     //IMPORTANT: this is required for the execute to set the limit variables properly
     //otherwise it'll convert the values to a string and the query will fail since LIMIT expects only numerical values and doesn't cast
