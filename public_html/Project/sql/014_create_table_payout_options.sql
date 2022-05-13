@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Payout_Options(
+CREATE TABLE IF NOT EXISTS Shootup_Payout_Options(
     id int AUTO_INCREMENT PRIMARY KEY,
     first_place int default 70,
     second_place int default 20,

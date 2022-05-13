@@ -1,4 +1,4 @@
-INSERT INTO Payout_Options (id, first_place, second_place, third_place)
+INSERT INTO Shootup_Payout_Options (id, first_place, second_place, third_place)
 VALUES
 (-1, 70, 20, 10),
 (-2, 60, 30, 10),

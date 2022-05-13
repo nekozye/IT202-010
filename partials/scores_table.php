@@ -21,6 +21,9 @@ if (in_array($duration, ["day", "week", "month", "lifetime"])) {
     $results = get_latest_scores($user_id);
     se($results);
 }
+else if ($duration === "competition") {
+    $results = get_top_scores_for_comp($comp_id);
+}
 
 switch ($duration) {
     case "day":
@@ -37,6 +40,9 @@ switch ($duration) {
         break;
     case "latest":
         $title = "Latest Scores";
+        break;
+    case "competition":
+        //title defined outside
         break;
     default:
         $title = "Invalid Scoreboard";

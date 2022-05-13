@@ -26,6 +26,7 @@ function get_or_create_account()
         $query = "SELECT id, account, balance from Accounts where user_id = :uid LIMIT 1";
         $db = getDB();
         $stmt = $db->prepare($query);
+        $created = false;
         try {
             $stmt->execute([":uid" => get_user_id()]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -37,10 +38,14 @@ function get_or_create_account()
                     $user_id = get_user_id(); //caching a reference
                     $stmt = $db->prepare($query);
                     $stmt->execute([":uid" => $user_id]);
-                    flash("Welcome! Your account has been created successfully", "success");
                     $account["id"] = $db->lastInsertId();
                     //this should mimic what's happening in the DB without requiring me to fetch the data
-                    $account["account_number"] = str_pad($user_id, 12, "0", STR_PAD_LEFT);
+                    $account["account_number"] = str_pad($user_id, 12, "0");
+                    flash("Welcome! Your account has been created successfully", "success");
+                    if (give_gems(10, "welcome", -1, $account["id"], "Welcome bonus!")) {
+                        flash("Enjoy 10 bonus gems as a welcome bonus!", "success");
+                    }
+                    $created = true;
                 } catch (PDOException $e) {
                     flash("An error occurred while creating your account", "danger");
                     error_log(var_export($e, true));
@@ -55,7 +60,10 @@ function get_or_create_account()
             flash("Technical error: " . var_export($e->errorInfo, true), "danger");
         }
         $_SESSION["user"]["account"] = $account; //storing the account info as a key under the user session
-        //Note: if there's an error it'll initialize to the "empty" definition around line 161
+        if (isset($created) && $created) {
+            refresh_account_balance();
+        }
+        //Note: if there's an error it'll initialize to the "empty" definition around line 42
 
     } else {
         flash("You're not logged in", "danger");
@@ -83,7 +91,7 @@ function give_gems($gems, $reason, $losing = -1, $gaining = -1, $details = "")
 {
     //I'm choosing to ignore the record of 0 point transactions
     if ($gems > 0) {
-        $query = "INSERT INTO RM_Gem_History (src, dest, diff, reason, details) 
+        $query = "INSERT INTO Churu_History (src, dest, diff, reason, details) 
             VALUES (:acs1, :acd1, :pc, :r,:m), 
             (:acs2, :acd2, :pc2, :r, :m)";
         //I'll insert both records at once, note the placeholders that are kept the same and the ones changed.

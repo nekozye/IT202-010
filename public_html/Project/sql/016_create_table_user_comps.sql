@@ -1,4 +1,4 @@
-CREATE TABLE UserComps(
+CREATE TABLE Shootup_UserComps(
     id int AUTO_INCREMENT PRIMARY KEY,
     user_id int,
     competition_id int,
@@ -6,5 +6,5 @@ CREATE TABLE UserComps(
     modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     unique key(user_id, competition_id),
     FOREIGN KEY (user_id) REFERENCES Users(id),
-    FOREIGN KEY (competition_id) REFERENCES Competitions(id)
+    FOREIGN KEY (competition_id) REFERENCES Shootup_Comps(id)
 )

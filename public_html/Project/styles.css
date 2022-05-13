@@ -57,6 +57,12 @@
     margin-right:5px;
 }
 
+.form-tiny{
+    width: 25%;
+    float:right;
+}
+
+
 
 /* Fade toolkit  https://stackoverflow.com/questions/4359627/stopping-a-css3-animation-on-last-frame */
 

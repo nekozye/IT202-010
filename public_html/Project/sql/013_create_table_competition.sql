@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Competitions(
+CREATE TABLE IF NOT EXISTS Shootup_Comps(
     -- Remember to refer to your proposal for your exact columns
     id int AUTO_INCREMENT PRIMARY KEY,
     title varchar(240) not null,
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS Competitions(
     expires TIMESTAMP DEFAULT (DATE_ADD(CURRENT_TIMESTAMP, INTERVAL duration DAY)),
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-    FOREIGN KEY (payout_option) REFERENCES Payout_Options(id),
+    FOREIGN KEY (payout_option) REFERENCES Shootup_Payout_Options(id),
     FOREIGN KEY(creator_id) REFERENCES Users(id),
     check (min_score >= 1),
     check (starting_reward >= 1),
