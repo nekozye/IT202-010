@@ -1,6 +1,6 @@
 <table><tr><td> <em>Assignment: </em> IT202 Milestone 3 Arcade Project</td></tr>
 <tr><td> <em>Student: </em> Jong Hyun Choi(jc865)</td></tr>
-<tr><td> <em>Generated: </em> 5/13/2022 12:34:42 AM</td></tr>
+<tr><td> <em>Generated: </em> 5/13/2022 12:41:06 AM</td></tr>
 <tr><td> <em>Grading Link: </em> <a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IT202-010-S22/it202-milestone-3-arcade-project/grade/jc865" target="_blank">Grading</a></td></tr></table>
 <table><tr><td> <em>Instructions: </em> <ol>
 <li>Checkout Milestone3 branch </li>
@@ -165,36 +165,40 @@ All website links must be from prod (you can assume/infer this by getting your d
 <tr><td> <em>Caption:</em> (missing)</td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 4: </em> Add related pull request link(s)</td></tr>
-<tr><td>Not provided</td></tr>
+<tr><td> <a rel="noreferrer noopener" target="_blank" href="https://github.com/nekozye/IT202-010/pull/66">https://github.com/nekozye/IT202-010/pull/66</a> </td></tr>
 <tr><td> <em>Sub-Task 5: </em> Briefly explain the logic/code for joining a competition and the involved steps</td></tr>
 <tr><td> <em>Response:</em> <p>(missing)</p><br></td></tr>
 <tr><td> <em>Sub-Task 6: </em> Add a direct link to heroku prod for this file (any join page)</td></tr>
-<tr><td>Not provided</td></tr>
+<tr><td> <a rel="noreferrer noopener" target="_blank" href="https://github.com/nekozye/IT202-010/pull/66">https://github.com/nekozye/IT202-010/pull/66</a> </td></tr>
 </table></td></tr>
 <table><tr><td> <em>Deliverable 9: </em> Create a function to calculate winners </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://via.placeholder.com/400x120/f2c037/000000?text=Partial"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Add screenshots of the whole code process with the clear comments (ensure your ucid and date are shown)</td></tr>
-<tr><td><table><tr><td>Missing Image</td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td><table><tr><td><img width="768px" src="https://github.com/nekozye/IT202-010/blob/Milestone4/pictures/Project/FinalMilestone/Milestone3/comp/com_calc.png?raw=true"/></td></tr>
+<tr><td> <em>Caption:</em> <p>Winner Calculation Logic<br></p>
+</td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 2: </em> Mention which winner calculation you chose (copy the text from the proposal for your choice)</td></tr>
 <tr><td> <em>Response:</em> <p>Where the individual score was earned/created between when the user joined the competition<br>and when the Competition expires <br></p><br></td></tr>
 <tr><td> <em>Sub-Task 3: </em> Add before and after screenshots of the Competitions table of valid and invalid competitions being successfully processed</td></tr>
-<tr><td><table><tr><td>Missing Image</td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td><table><tr><td><img width="768px" src="https://github.com/nekozye/IT202-010/blob/Milestone4/pictures/Project/FinalMilestone/Milestone3/comp/comp_val_log.png?raw=true"/></td></tr>
+<tr><td> <em>Caption:</em> <p>valid comp log<br></p>
+</td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 4: </em> Briefly explain the calculation steps and payout process</td></tr>
-<tr><td> <em>Response:</em> <p>(missing)</p><br></td></tr>
+<tr><td> <em>Response:</em> <p>The payout process and the winner selection logic is exactly the same, since<br>it just pulls from the top 3.<br></p><br></td></tr>
 <tr><td> <em>Sub-Task 5: </em> Add related pull request link(s)</td></tr>
 <tr><td>Not provided</td></tr>
 </table></td></tr>
-<table><tr><td> <em>Deliverable 10: </em> Proposal.md </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://via.placeholder.com/400x120/ff0000/000000?text=Incomplete"></td></tr>
+<table><tr><td> <em>Deliverable 10: </em> Proposal.md </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=Complete"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em>  Add screenshots showing your updated proposal.md file with checkmarks, dates, and link to milestone3.md accordingly and a direct link to the path on Heroku prod (see instructions)</td></tr>
-<tr><td><table><tr><td>Missing Image</td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td><table><tr><td><img width="768px" src="https://github.com/nekozye/IT202-010/blob/Milestone4/pictures/Project/FinalMilestone/Milestone3/ms3pack.png?raw=true"/></td></tr>
+<tr><td> <em>Caption:</em> <p>markdown scrnshot<br></p>
+</td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 2: </em> Add screenshots showing which issues are done/closed (project board) Incomplete Issues should not be closed (Milestone3 issues)</td></tr>
-<tr><td><table><tr><td>Missing Image</td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td><table><tr><td><img width="768px" src="https://github.com/nekozye/IT202-010/blob/Milestone4/pictures/Project/FinalMilestone/Milestone3/tbdonems3.png?raw=true"/></td></tr>
+<tr><td> <em>Caption:</em> <p>selectorionification<br></p>
+</td></tr>
 </table></td></tr>
 </table></td></tr>
 <table><tr><td><em>Grading Link: </em><a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IT202-010-S22/it202-milestone-3-arcade-project/grade/jc865" target="_blank">Grading</a></td></tr></table>
