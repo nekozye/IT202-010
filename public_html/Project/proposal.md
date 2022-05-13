@@ -5,6 +5,8 @@
 ## Website Link: https://jc865-prod.herokuapp.com/Project/index.html
 ## Your Name:Jonghyun Choi
 
+## Video <a href="https://youtu.be/L6CaUnSwLUI">Link</a>
+
 <!-- Line item / Feature template (use this for each bullet point) -- DO NOT DELETE THIS SECTION
 
 
