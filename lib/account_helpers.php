@@ -2,7 +2,6 @@
 function refresh_account_balance()
 {
     if (is_logged_in()) {
-        //cache account balance via RM_Gem_History history
         $query = "UPDATE Accounts set balance = (SELECT IFNULL(SUM(diff), 0) from Churu_History WHERE src = :src) where id = :src";
         $db = getDB();
         $stmt = $db->prepare($query);
@@ -11,9 +10,23 @@ function refresh_account_balance()
             get_or_create_account(); //refresh session data
         } catch (PDOException $e) {
             error_log(var_export($e->errorInfo, true));
-            flash("Error refreshing gem balance", "danger");
+            flash("Error refreshing churu balance", "danger");
         }
+
+        //updates the user table with the calculated and saved accounts table
+        $query = "UPDATE Users set balance = (SELECT balance from Accounts WHERE id = :src) where id = (SELECT user_id from Accounts WHERE id = :src)";
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":src" => get_user_account_id()]);
+            error_log("checkout, user updated");
+            get_or_create_account(); //refresh session data
+        } catch (PDOException $e) {
+            error_log(var_export($e->errorInfo, true));
+            flash("Error refreshing churu balance - user side", "danger");
+        }
+
     }
+    
 }
 
 function get_or_create_account()
@@ -43,7 +56,7 @@ function get_or_create_account()
                     $account["account_number"] = str_pad($user_id, 12, "0");
                     flash("Welcome! Your account has been created successfully", "success");
                     if (give_gems(10, "welcome", -1, $account["id"], "Welcome bonus!")) {
-                        flash("Enjoy 10 bonus gems as a welcome bonus!", "success");
+                        flash("Enjoy 10 bonus churus as a welcome bonus!", "success");
                     }
                     $created = true;
                 } catch (PDOException $e) {
@@ -74,6 +87,10 @@ function get_or_create_account()
 function get_account_balance()
 {
     if (is_logged_in() && isset($_SESSION["user"]["account"])) {
+        
+        refresh_account_balance();
+
+
         return (int)se($_SESSION["user"]["account"], "balance", 0, false);
     }
     return 0;
@@ -87,10 +104,10 @@ function get_user_account_id()
     return 0;
 }
 
-function give_gems($gems, $reason, $losing = -1, $gaining = -1, $details = "")
+function give_gems($churus, $reason, $losing = -1, $gaining = -1, $details = "")
 {
     //I'm choosing to ignore the record of 0 point transactions
-    if ($gems > 0) {
+    if ($churus > 0) {
         $query = "INSERT INTO Churu_History (src, dest, diff, reason, details) 
             VALUES (:acs1, :acd1, :pc, :r,:m), 
             (:acs2, :acd2, :pc2, :r, :m)";
@@ -99,11 +116,11 @@ function give_gems($gems, $reason, $losing = -1, $gaining = -1, $details = "")
         $params[":acd1"] = $gaining;
         $params[":r"] = $reason;
         $params[":m"] = $details;
-        $params[":pc"] = ($gems * -1);
+        $params[":pc"] = ($churus * -1);
 
         $params[":acs2"] = $gaining;
         $params[":acd2"] = $losing;
-        $params[":pc2"] = $gems;
+        $params[":pc2"] = $churus;
         $db = getDB();
         $stmt = $db->prepare($query);
         try {
@@ -117,7 +134,7 @@ function give_gems($gems, $reason, $losing = -1, $gaining = -1, $details = "")
             return true;
         } catch (PDOException $e) {
             error_log(var_export($e->errorInfo, true));
-            flash("There was an error transfering gems", "danger");
+            flash("There was an error transfering churus", "danger");
         }
     }
     return false;

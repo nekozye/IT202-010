@@ -230,7 +230,7 @@ function calc_winners()
 
                             error_log("check $aid");
 
-
+                            //gem given based on current score match
                             if ($index == 0) {
                                 if (give_gems($fpr, "won-comp", -1, $aid, "First place in $title with score of $score")) {
                                     $atleastOne = true;
