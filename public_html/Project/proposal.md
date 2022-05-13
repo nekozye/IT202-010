@@ -172,7 +172,7 @@
         - [x] Show the competition name, participant count, reward, the expiry date if active otherwise “expired”, whether or not they are the creator
     - [x] User with the role of “admin” can edit a competition where paid_out = false
         - [x] They can adjust any of the regular form values
-        - [ ] If the competition was expired they can update the duration to include extra time
+        - [x] If the competition was expired they can update the duration to include extra time
     - [x] Add pagination to the Active Competitions view
         - [x] Show 10 competitions per page
         - [x] Paginate anything after 10
